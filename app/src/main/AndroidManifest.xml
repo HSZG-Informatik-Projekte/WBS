@@ -16,7 +16,8 @@
             android:name=".CreateProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_create_profile"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme">
+        </activity>
         <activity
             android:name=".SpalshScreen"
             android:theme="@style/FullScreen">
@@ -25,6 +26,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity>
+            android:name=".FollowerChoiceActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_follower_choice"
+            android:theme="@style/FullscreenTheme">
         </activity>
         <activity
             android:name=".MainActivity"
