@@ -12,6 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.FullScreen">
+        <activity
+            android:name=".FollowerChoiceActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_follower_choice"
+            android:theme="@style/FullscreenTheme"></activity>
         <activity android:name=".SpalshScreen">
             android:theme = "@style/ThemeSplashScreen">
             <intent-filter>
@@ -20,8 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
