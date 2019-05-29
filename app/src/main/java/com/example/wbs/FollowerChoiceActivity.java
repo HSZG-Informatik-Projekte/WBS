@@ -1,18 +1,28 @@
 package com.example.wbs;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.provider.MediaStore;
+import android.renderscript.Allocation;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
+
+import java.util.ArrayList;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class FollowerChoiceActivity extends AppCompatActivity {
+
+    private Resources userFollowerChoice;
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -89,23 +99,88 @@ public class FollowerChoiceActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_follower_choice);
 
-        mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
-        mContentView = findViewById(R.id.fullscreen_content);
+       // mVisible = true;
+       // mControlsView = findViewById(R.id.fullscreen_content_controls);
+       // mContentView = findViewById(R.id.fullscreen_content);
+
+        //FOLLOWER 1
+        final ImageButton myImageButton1 = findViewById(R.id.FCA_ImageButton_follower_1);
+        myImageButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userFollowerChoice = myImageButton1.getResources();
+                openNextActivity();
+            }
+        });
+
+        //FOLLOWER 2
+        final ImageButton myImageButton2 = findViewById(R.id.FCA_ImageButton_follower_2);
+        myImageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userFollowerChoice = myImageButton2.getResources();
+                openNextActivity();
+            }
+        });
+
+        //FOLLOWER 3
+        final ImageButton myImageButton3 = findViewById(R.id.FCA_ImageButton_follower_3);
+        myImageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userFollowerChoice = myImageButton3.getResources();
+                openNextActivity();
+            }
+        });
+
+        //FOLLOWER
+        final ImageButton myImageButton4 = findViewById(R.id.FCA_ImageButton_follower_4);
+        myImageButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userFollowerChoice = myImageButton4.getResources();
+                openNextActivity();
+            }
+        });
+
+        //FOLLOWER
+        final ImageButton myImageButton5 = findViewById(R.id.FCA_ImageButton_follower_5);
+        myImageButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userFollowerChoice = myImageButton5.getResources();
+                openNextActivity();
+            }
+        });
+
+        //FOLLOWER
+        final ImageButton myImageButton6 = findViewById(R.id.FCA_ImageButton_follower_6);
+        myImageButton6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userFollowerChoice = myImageButton6.getResources();
+                openNextActivity();
+            }
+        });
 
 
         // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
+  /*      mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggle();
             }
         });
-
+   */
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+    //    findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+    }
+
+    private void openNextActivity() {
+        Intent intentLoadNewActivity = new Intent(FollowerChoiceActivity.this, MainActivity.class);
+        startActivity(intentLoadNewActivity);
     }
 
     @Override

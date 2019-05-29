@@ -5,5 +5,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="CreateProfileActivity_Header">Profil anlegen</string>
     <string name="CreateProfileActivity_Name">Meine Name ist</string>
-    <string name="FCA_Header">Wähle einen Begleiter aus:</string
+    <string name="FCA_Header">Wähle einen Begleiter aus:</string>
+    <string name="FCA_FollowerIconDescription">Bild deines Begleiters</string>
 </resources>
