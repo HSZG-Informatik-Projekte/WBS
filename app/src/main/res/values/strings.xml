@@ -8,4 +8,6 @@
     <string name="FCA_Header">Wähle einen Begleiter aus:</string>
     <string name="FCA_FollowerIconDescription">Bild deines Begleiters</string>
     <string name="ENW_Header">Willkommen in Europa</string>
+    <string name="MENU_CONTROL_BACK">Zurück</string>
+    <string name="MENU_CONTROL_NEXT">Weiter</string>
 </resources>

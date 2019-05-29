@@ -3,6 +3,7 @@ package com.example.wbs;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.provider.MediaStore;
 import android.renderscript.Allocation;
 import android.support.v7.app.ActionBar;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -21,8 +23,19 @@ import java.util.ArrayList;
  */
 public class FollowerChoiceActivity extends AppCompatActivity {
 
-    private Resources userFollowerChoice;
+    private static Resources userFollowerChoice;
+    private static final String active_follower = "#FFFFFF";
+    private static final String non_active_follower = "#000000";
 
+    ArrayList<ImageButton> imageButtonsList;
+    private static final int[] FOLLOWER_IDS = {
+            R.id.FCA_ImageButton_follower_1,
+            R.id.FCA_ImageButton_follower_2,
+            R.id.FCA_ImageButton_follower_3,
+            R.id.FCA_ImageButton_follower_4,
+            R.id.FCA_ImageButton_follower_5,
+            R.id.FCA_ImageButton_follower_6
+    };
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -93,94 +106,69 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         }
     };
 
+    private void setAllFollowerNone() {
+        for(ImageButton ib : imageButtonsList) {
+            ib.setBackgroundColor(Color.parseColor(non_active_follower));
+        }
+    }
+
+    public Resources getUserFollowerChoice() {
+        return userFollowerChoice;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_follower_choice);
+        mVisible = true;
+        mControlsView = findViewById(R.id.fullscreen_content_controls);
+        mContentView = findViewById(R.id.fullscreen_content);
 
-       // mVisible = true;
-       // mControlsView = findViewById(R.id.fullscreen_content_controls);
-       // mContentView = findViewById(R.id.fullscreen_content);
-
-        //FOLLOWER 1
-        final ImageButton myImageButton1 = findViewById(R.id.FCA_ImageButton_follower_1);
-        myImageButton1.setOnClickListener(new View.OnClickListener() {
+        //NEXT BUTTON
+        final Button ButtonNext = findViewById(R.id.FCA_button_next);
+        ButtonNext.setEnabled(false);
+        ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userFollowerChoice = myImageButton1.getResources();
-                openNextActivity();
+                Intent intentLoadNewActivity = new Intent(FollowerChoiceActivity.this, MainActivity.class);
+                startActivity(intentLoadNewActivity);
             }
         });
 
-        //FOLLOWER 2
-        final ImageButton myImageButton2 = findViewById(R.id.FCA_ImageButton_follower_2);
-        myImageButton2.setOnClickListener(new View.OnClickListener() {
+        //BACK BUTTON
+        final Button ButtonBack = findViewById(R.id.FCA_button_back);
+        ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userFollowerChoice = myImageButton2.getResources();
-                openNextActivity();
+                Intent intentLoadNewActivity = new Intent(FollowerChoiceActivity.this, CreateProfileActivity.class);
+                startActivity(intentLoadNewActivity);
             }
         });
 
-        //FOLLOWER 3
-        final ImageButton myImageButton3 = findViewById(R.id.FCA_ImageButton_follower_3);
-        myImageButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userFollowerChoice = myImageButton3.getResources();
-                openNextActivity();
-            }
-        });
+        imageButtonsList = new ArrayList<ImageButton>(FOLLOWER_IDS.length);
 
-        //FOLLOWER
-        final ImageButton myImageButton4 = findViewById(R.id.FCA_ImageButton_follower_4);
-        myImageButton4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userFollowerChoice = myImageButton4.getResources();
-                openNextActivity();
-            }
-        });
-
-        //FOLLOWER
-        final ImageButton myImageButton5 = findViewById(R.id.FCA_ImageButton_follower_5);
-        myImageButton5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userFollowerChoice = myImageButton5.getResources();
-                openNextActivity();
-            }
-        });
-
-        //FOLLOWER
-        final ImageButton myImageButton6 = findViewById(R.id.FCA_ImageButton_follower_6);
-        myImageButton6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userFollowerChoice = myImageButton6.getResources();
-                openNextActivity();
-            }
-        });
-
+        for(int id : FOLLOWER_IDS) {
+            final ImageButton ib = (ImageButton)findViewById(id);
+            ib.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    userFollowerChoice = ib.getResources();
+                    setAllFollowerNone();
+                    ib.setBackgroundColor(Color.parseColor(active_follower));
+                    ButtonNext.setEnabled(true);
+                }
+            });
+            imageButtonsList.add(ib);
+        }
 
         // Set up the user interaction to manually show or hide the system UI.
-  /*      mContentView.setOnClickListener(new View.OnClickListener() {
+        mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggle();
             }
         });
-   */
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-    //    findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-    }
-
-    private void openNextActivity() {
-        Intent intentLoadNewActivity = new Intent(FollowerChoiceActivity.this, MainActivity.class);
-        startActivity(intentLoadNewActivity);
     }
 
     @Override
