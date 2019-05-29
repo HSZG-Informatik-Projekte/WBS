@@ -87,11 +87,11 @@ public class CreateProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_create_profile);
+         setContentView(R.layout.activity_create_profile);
 
-        mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
-        mContentView = findViewById(R.id.fullscreen_content);
+       mVisible = true;
+       mControlsView = findViewById(R.id.fullscreen_content_controls);
+       mContentView = findViewById(R.id.fullscreen_content);
 
 
         // Set up the user interaction to manually show or hide the system UI.

@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class SpalshScreen extends AppCompatActivity {
 
+    private static boolean isProfile = false;
 
     private static int SPLASH_TIME = 4000; //This is 4 seconds
 
@@ -19,7 +20,12 @@ public class SpalshScreen extends AppCompatActivity {
             @Override
             public void run() {
                 //Do any action here. Now we are moving to next page
-                Intent mySuperIntent = new Intent(SpalshScreen.this, MainActivity.class);
+                Intent mySuperIntent;
+                if(isProfile == true) {
+                    mySuperIntent = new Intent(SpalshScreen.this, MainActivity.class);
+                } else {
+                    mySuperIntent = new Intent(SpalshScreen.this, CreateProfileActivity.class);
+                }
                 startActivity(mySuperIntent);
                 /* This 'finish()' is for exiting the app when back button pressed
                  *  from Home page which is ActivityHome
