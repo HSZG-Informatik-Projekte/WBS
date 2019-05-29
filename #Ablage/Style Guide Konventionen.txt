@@ -1,0 +1,10 @@
+Namen:
+CammelCase
+    Activities:     Aktivit‰tsName + "Activity"
+    Strings:        Groﬂbuchstaben der Activity + "_" + Funktion
+    IDs:            Groﬂbuchstaben der Activity + "_" + Objektname + "_" + nummer
+
+
+
+Schriftgrˆﬂen:
+	‹berschrift: 24 pt

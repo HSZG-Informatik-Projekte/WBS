@@ -12,19 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullScreen">
-        <activity android:name=".SpalshScreen"
-            android:theme="@style/FullScreen"
-            >
+        <activity
+            android:name=".CreateProfileActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_create_profile"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity
+            android:name=".SpalshScreen"
+            android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/FullScreenWithActionBar"
-            >
-        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/FullScreenWithActionBar"></activity>
     </application>
 
 </manifest>

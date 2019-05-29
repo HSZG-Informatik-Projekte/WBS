@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">WBS</string>
+
+    <string name="title_activity_create_profile">CreateProfileActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="CreateProfileActivity_Header">Profil anlegen</string>
+    <string name="CreateProfileActivity_Name">Meine Name ist</string>
 </resources>
