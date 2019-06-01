@@ -13,15 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/FullScreen">
         <activity
+            android:name=".VideoScreenActivity"
+            android:label="VideoScreenActivity"
+            android:theme="@style/FullScreen"/>
+        <activity
             android:name=".EnterNewWorldActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="EnterNewWorldActivity"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".CreateProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_create_profile"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".SpalshScreen"
             android:theme="@style/FullScreen">
@@ -35,7 +39,7 @@
             android:name=".FollowerChoiceActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="FollowerChoiceActivity"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/FullScreenWithActionBar" />
