@@ -104,7 +104,7 @@
         app:srcCompat="@mipmap/icon_follower_4" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/CPA_text_name"
         android:layout_width="376dp"
         android:layout_height="39dp"
         android:layout_marginStart="8dp"
@@ -150,7 +150,7 @@
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
@@ -161,7 +161,7 @@
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008"
+        app:layout_constraintVertical_bias="0.366"
         app:srcCompat="@mipmap/icon_follower_1" />
 
     <ImageButton

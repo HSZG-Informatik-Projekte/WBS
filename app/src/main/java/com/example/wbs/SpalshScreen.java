@@ -9,7 +9,7 @@ public class SpalshScreen extends AppCompatActivity {
 
     private static boolean isProfile = false;
 
-    private static int SPLASH_TIME = 4000; //This is 4 seconds
+    private static int SPLASH_TIME = 2000; //This is 4 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
