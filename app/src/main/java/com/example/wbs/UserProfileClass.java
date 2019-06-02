@@ -15,7 +15,7 @@ public class UserProfileClass {
 
     // anschauen -> getDefaultSharedPreferences
     //https://developer.android.com/training/data-storage/shared-preferences#java
-    public void StoreValues {
+    public void StoreValues() {
         /*
         //WRITE
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
