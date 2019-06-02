@@ -27,7 +27,7 @@
             android:label="@string/title_activity_create_profile"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".SpalshScreen"
+            android:name=".SplashScreen"
             android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
