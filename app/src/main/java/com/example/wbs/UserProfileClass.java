@@ -1,34 +1,56 @@
 package com.example.wbs;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 
-public class UserProfileClass {
+import java.io.Serializable;
+
+public class UserProfileClass implements Serializable  { // extends Activity
 
     private String name;
     private Gender gender;
-    private int alter;
+    private int age;
     private int follower;
     private Color color;
+    private boolean isProfile;
 
-    // anschauen -> getDefaultSharedPreferences
-    //https://developer.android.com/training/data-storage/shared-preferences#java
-    public void StoreValues() {
-        /*
-        //WRITE
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(getString(R.string.saved_high_score_key), newHighScore);
-        editor.commit();
+    //private SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+    UserProfileClass() {
+        this.isProfile = false;
+        //setName(getStoreValues("NAME","ERROR"));
+        //setGender((Gender) getStoreValues("GENDER","ERROR"));
+        //setAge(getStoreValues("AGE", 0));
+        //setFollower(getStoreValues("FOLLOWER", 0));
+        //setColor(Color.toArgb(getStoreValues("COLOR","#000000")));
+    }
 
-        //READ
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int defaultValue = getResources().getInteger(R.integer.saved_high_score_default_key);
-        int highScore = sharedPref.getInt(getString(R.string.saved_high_score_key), defaultValue);
-        */
+    //SET STRING
+    public void setStoreValues(String key, String value) {
+/*        SharedPreferences.Editor edit = app_preferences.edit();
+        edit.putString(key, value);
+        edit.commit();
+        edit.apply();
+  */  }
+    //GET STRING
+    public String getStoreValues(String key, String def) {
+ //       return app_preferences.getString(key, def);
+        return "";
+    }
+
+    //SET INTEGER
+    public void setStoreValues(String key, Integer value) {
+  /*      SharedPreferences.Editor edit = app_preferences.edit();
+        edit.putInt(key, value);
+        edit.commit();
+        edit.apply();
+  */  }
+    //GET INTEGER
+    public Integer getStoreValues(String key, Integer def) {
+  //      return app_preferences.getInt(key, def);
+        return 0;
     }
 
     public String getName() {
@@ -37,6 +59,7 @@ public class UserProfileClass {
 
     public void setName(String name) {
         this.name = name;
+        setStoreValues("NAME", name);
     }
 
     public Gender getGender() {
@@ -45,14 +68,16 @@ public class UserProfileClass {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+        setStoreValues("GENDER", gender.toString());
     }
 
-    public int getAlter() {
-        return alter;
+    public int getAge() {
+        return age;
     }
 
-    public void setAlter(int alter) {
-        this.alter = alter;
+    public void setAge(int age) {
+        this.age = age;
+        setStoreValues("AGE", age);
     }
 
     public int getFollower() {
@@ -61,6 +86,7 @@ public class UserProfileClass {
 
     public void setFollower(int follower) {
         this.follower = follower;
+        setStoreValues("FOLLOWER", follower);
     }
 
     public Color getColor() {
@@ -69,9 +95,18 @@ public class UserProfileClass {
 
     public void setColor(Color color) {
         this.color = color;
+        setStoreValues("COLOR", color.toString());
+    }
+
+    public boolean getisProfile() {
+        return isProfile;
+    }
+
+    public void setisProfile(boolean profile) {
+        isProfile = profile;
     }
 
     public enum Gender {
-        MALE, FEMALE
+        MALE, FEMALE;
     };
 }

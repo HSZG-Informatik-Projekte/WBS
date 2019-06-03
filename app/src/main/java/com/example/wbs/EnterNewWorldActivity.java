@@ -10,9 +10,13 @@ import android.view.View;
 
 public class EnterNewWorldActivity extends AppCompatActivity {
 
+    private UserProfileClass wbsProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
 
         setContentView(R.layout.activity_enter_new_world);
 

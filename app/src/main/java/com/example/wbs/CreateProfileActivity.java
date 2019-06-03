@@ -14,11 +14,15 @@ import android.widget.Button;
 
 public class CreateProfileActivity extends AppCompatActivity {
 
+    private UserProfileClass wbsProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         setContentView(R.layout.activity_create_profile);
+        wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
+
+        setContentView(R.layout.activity_create_profile);
 
         Button nextActivity = findViewById(R.id.CPA_button_next);
 
@@ -26,6 +30,7 @@ public class CreateProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent mySuperIntent = new Intent(CreateProfileActivity.this, FollowerChoiceActivity.class);
+                mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
             }
         });
@@ -39,6 +44,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 //ButtonFemale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderpink.xml"));
                 ButtonFemale.setBackgroundColor(Color.rgb(0xff, 0x69, 0xb4));//0x3F51B5);
                 ButtonMale.setBackgroundResource(0);
+                wbsProfile.setGender(UserProfileClass.Gender.FEMALE);
             }
         });
 
@@ -48,6 +54,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 ButtonMale.setBackgroundColor(Color.rgb(0x3f, 0x51, 0xb5));
                 ButtonFemale.setBackgroundResource(0);
                 //ButtonMale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderblue.xml"));
+                wbsProfile.setGender(UserProfileClass.Gender.MALE);
             }
         });
     }

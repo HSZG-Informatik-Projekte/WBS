@@ -7,25 +7,29 @@ import android.os.Bundle;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static boolean isProfile = false;
+    private UserProfileClass wbsProfile;
 
-    private static int SPLASH_TIME = 2000; //This is 4 seconds
+    private static int SPLASH_TIME = 2000; //This is 2 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        wbsProfile = new UserProfileClass();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //Do any action here. Now we are moving to next page
                 Intent mySuperIntent;
-                if(isProfile == true) {
+
+                if(wbsProfile.getisProfile() == true) {
                     mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
                 } else {
                     mySuperIntent = new Intent(SplashScreen.this, CreateProfileActivity.class);
                 }
+                mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
                 /* This 'finish()' is for exiting the app when back button pressed
                  *  from Home page which is ActivityHome

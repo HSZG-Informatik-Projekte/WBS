@@ -26,6 +26,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
     private static Resources userFollowerChoice;
     private static final String active_follower = "#FFFFFF";
     private static final String non_active_follower = "#000000";
+    private UserProfileClass wbsProfile;
 
     ArrayList<ImageButton> imageButtonsList;
     private static final int[] FOLLOWER_IDS = {
@@ -51,6 +52,8 @@ public class FollowerChoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
+
         setContentView(R.layout.activity_follower_choice);
 
         //NEXT BUTTON
@@ -59,8 +62,9 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentLoadNewActivity = new Intent(FollowerChoiceActivity.this, MainActivity.class);
-                startActivity(intentLoadNewActivity);
+                Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, MainActivity.class);
+                mySuperIntent.putExtra("wbsProfile", wbsProfile);
+                startActivity(mySuperIntent);
             }
         });
 
@@ -69,14 +73,17 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentLoadNewActivity = new Intent(FollowerChoiceActivity.this, CreateProfileActivity.class);
-                startActivity(intentLoadNewActivity);
+                Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, CreateProfileActivity.class);
+                mySuperIntent.putExtra("wbsProfile", wbsProfile);
+                startActivity(mySuperIntent);
             }
         });
 
         imageButtonsList = new ArrayList<ImageButton>(FOLLOWER_IDS.length);
 
+
         for(int id : FOLLOWER_IDS) {
+            final int i = id;
             final ImageButton ib = (ImageButton)findViewById(id);
             ib.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -85,6 +92,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
                     setAllFollowerNone();
                     ib.setBackgroundColor(Color.parseColor(active_follower));
                     ButtonNext.setEnabled(true);
+                    wbsProfile.setFollower(i);
                 }
             });
             imageButtonsList.add(ib);
