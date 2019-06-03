@@ -8,52 +8,8 @@
     android:background="#0099cc"
     tools:context=".CreateProfileActivity">
 
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="375dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718" />
-
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout
-        android:id="@+id/frameLayout3"
-        android:layout_width="212dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:fitsSystemWindows="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.855">
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
-            android:layout_width="199dp"
-            android:layout_height="34dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            tools:ignore="UselessParent" />
-    </FrameLayout>
 
     <TextView
         android:id="@+id/CPA_text_head"

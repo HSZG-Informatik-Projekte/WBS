@@ -183,31 +183,4 @@
         app:layout_constraintVertical_bias="0.366"
         app:srcCompat="@mipmap/icon_follower_3" />
 
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="113dp"
-        android:layout_height="42dp"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="625dp"
-        tools:visibility="invisible" />
-
-    <LinearLayout
-        android:id="@+id/fullscreen_content_controls"
-        style="?metaButtonBarStyle"
-        android:layout_width="93dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="580dp"
-        android:background="@color/black_overlay"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UselessParent"
-        tools:visibility="invisible"></LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
