@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class CreateProfileActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         final Button ButtonFemale = findViewById(R.id.CPA_button_female);
         final Button ButtonMale = findViewById(R.id.CPA_button_male);
-        //ButtonFemale.setEnabled(false);
+
         ButtonFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,5 +58,17 @@ public class CreateProfileActivity extends AppCompatActivity {
                 wbsProfile.setGender(UserProfileClass.Gender.MALE);
             }
         });
+
+        final EditText EditTextName = findViewById(R.id.CPA_edit_name);
+        final EditText EditTextAge = findViewById(R.id.CPA_edit_age);
+
+        /*
+        EditTextName.addTextChangedListener(new TextWatcher() {
+               public void afterTextChanged(Editable s) {
+
+               }
+            }
+
+        );*/
     }
 }

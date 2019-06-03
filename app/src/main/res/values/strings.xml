@@ -3,13 +3,20 @@
     <string name="title_activity_create_profile">CreateProfileActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
     <string name="CPA_Header">Profil anlegen</string>
     <string name="CPA_Name">Meine Name:</string>
+    <string name="CPA_Edit_Name">Name</string>
     <string name="CPA_Sex">Meine Geschlecht:</string>
     <string name="CPA_Fmale">weiblich</string>
     <string name="CPA_Male">männlich</string>
+    <string name="CPA_Age">Ich bin </string>
+    <string name="CPA_Edit_Age">Alter</string>
+    <string name="CPA_Age2">Jahre alt.</string>
+
     <string name="FCA_Header">Wähle deinen Begleiter aus:</string>
     <string name="FCA_FollowerIconDescription">Bild deines Begleiters</string>
+
     <string name="ENW_Header">Willkommen in Europa</string>
     <string name="MENU_CONTROL_BACK">Zurück</string>
     <string name="MENU_CONTROL_NEXT">Weiter</string>
