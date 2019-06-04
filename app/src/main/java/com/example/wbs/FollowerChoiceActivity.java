@@ -62,7 +62,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, MainActivity.class);
+                Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
             }

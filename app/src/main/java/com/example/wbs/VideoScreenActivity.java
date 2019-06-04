@@ -20,7 +20,7 @@ public class VideoScreenActivity extends AppCompatActivity {
 
         videoView = findViewById(R.id.videoViewID);
 
-        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.funny);
+        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.europe);
 
         playbutton =findViewById(R.id.playButtonID);
         continuebutton = findViewById(R.id.continueButtonID);
@@ -31,7 +31,7 @@ public class VideoScreenActivity extends AppCompatActivity {
                 playing=false;
                 playbutton.setVisibility(View.VISIBLE);
                 playbutton.setImageResource(R.drawable.repeat);
-                continuebutton.setVisibility(View.VISIBLE);
+                continuebutton.setVisibility(View.GONE);
             }
         });
     }
