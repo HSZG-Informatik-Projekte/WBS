@@ -34,23 +34,27 @@ public class VideoScreenActivity extends AppCompatActivity {
                 continuebutton.setVisibility(View.GONE);
             }
         });
-    }
-
-    public void play(View view) {
-        if (playing == false) {
-            playbutton.setImageResource(R.drawable.play);
-            videoView.start();
-            playbutton.setVisibility(View.GONE);
-            playing=true;
-        }
-    }
-
-    public void pause(View view){
-        if(playing==true){
-            videoView.pause();
-            playing=false;
-            playbutton.setVisibility(View.VISIBLE);
-        }
+        playbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if (playing == false) {
+                    playbutton.setImageResource(R.drawable.play);
+                    videoView.start();
+                    playbutton.setVisibility(View.GONE);
+                    playing = true;
+                }
+            }
+        } );
+        videoView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(playing==true){
+                    videoView.pause();
+                    playing=false;
+                    playbutton.setVisibility(View.VISIBLE);
+                }
+            }
+        } );
     }
 }
 
