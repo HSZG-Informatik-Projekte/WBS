@@ -3,6 +3,7 @@ package com.example.wbs;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,6 +16,8 @@ public class VideoScreenActivity extends AppCompatActivity {
     Boolean playing = false,started=false;
     ImageButton playButton,continueButton;
     int videoNumber;
+    String VName="europe";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +28,11 @@ public class VideoScreenActivity extends AppCompatActivity {
 
         videoView = findViewById(R.id.videoViewID);
 
-        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.europe);
+        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier(VName,"raw",""+getPackageName()));
 
         //videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
+
+
 
         playButton =findViewById(R.id.playButtonID);
 
