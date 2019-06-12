@@ -15,7 +15,7 @@ public class UserProfileClass implements Serializable  { // extends Activity
     UserProfileClass() {
         this.isProfile = false;
 
-        saveToFile();
+        //saveToFile();
     }
 
     private void saveToFile() {
