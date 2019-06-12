@@ -12,14 +12,14 @@ public class UserProfileClass implements Serializable  { // extends Activity
     private Color color;
     private boolean isProfile;
 
-
     UserProfileClass() {
         this.isProfile = false;
-        //setName(getStoreValues("NAME","ERROR"));
-        //setGender((Gender) getStoreValues("GENDER","ERROR"));
-        //setAge(getStoreValues("AGE", 0));
-        //setFollower(getStoreValues("FOLLOWER", 0));
-        //setColor(Color.toArgb(getStoreValues("COLOR","#000000")));
+
+        //saveToFile();
+    }
+
+    private void saveToFile() {
+        JsonUtil.WBSProfileToJson(this);
     }
 
     public String getName() {
@@ -28,7 +28,6 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public void setName(String name) {
         this.name = name;
-        setStoreValues("NAME", name);
     }
 
     public Gender getGender() {
@@ -37,7 +36,6 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public void setGender(Gender gender) {
         this.gender = gender;
-        setStoreValues("GENDER", gender.toString());
     }
 
     public int getAge() {
@@ -46,7 +44,6 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public void setAge(int age) {
         this.age = age;
-        setStoreValues("AGE", age);
     }
 
     public int getFollower() {
@@ -55,7 +52,6 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public void setFollower(int follower) {
         this.follower = follower;
-        setStoreValues("FOLLOWER", follower);
     }
 
     public Color getColor() {
@@ -64,7 +60,6 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public void setColor(Color color) {
         this.color = color;
-        setStoreValues("COLOR", color.toString());
     }
 
     public boolean getisProfile() {
