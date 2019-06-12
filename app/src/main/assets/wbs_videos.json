@@ -1,0 +1,25 @@
+{
+  "videofiledetails": [
+    {
+      "videofileid": 1,
+      "name": "Europa",
+      "description": "Hier geht das ab...",
+      "filepath": "res/raw/europe.mp4",
+      "duration": 107410
+    },
+    {
+      "videofileid": 2,
+      "name": "test",
+      "description": "funny",
+      "filepath": "res/raw/funny.mp4",
+      "duration": 76434
+    },
+    {
+      "videofileid": 3,
+      "name": "test",
+      "description": "Paris",
+      "filepath": "res/raw/paris.mp4",
+      "duration": 23423
+    }
+  ]
+}
