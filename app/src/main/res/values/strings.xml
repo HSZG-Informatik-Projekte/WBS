@@ -19,7 +19,7 @@
 
     <string name="MA_Click">Klick mich!</string>
 
-    <string name="ENW_Header">Willkommen in Europa</string>
+    <string name="ENWA_Header">Willkommen in Europa</string>
     <string name="MENU_CONTROL_BACK">Zurück</string>
     <string name="MENU_CONTROL_NEXT">Weiter</string>
 </resources>

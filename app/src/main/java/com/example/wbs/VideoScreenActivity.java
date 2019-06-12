@@ -30,7 +30,7 @@ public class VideoScreenActivity extends AppCompatActivity {
 
         videoView.setVideoPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier(VName,"raw",""+getPackageName()));
 
-        //videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
+        videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
 
 
 
