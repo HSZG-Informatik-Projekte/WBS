@@ -1,6 +1,7 @@
 package com.example.wbs;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -60,6 +62,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         });
 
         final EditText EditTextName = findViewById(R.id.CPA_edit_name);
+        EditTextName.requestFocus();
         final EditText EditTextAge = findViewById(R.id.CPA_edit_age);
 
         /*

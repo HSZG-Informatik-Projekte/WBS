@@ -17,6 +17,8 @@
     <string name="FCA_Header">Wähle deinen Begleiter aus:</string>
     <string name="FCA_FollowerIconDescription">Bild deines Begleiters</string>
 
+    <string name="MA_Click">Klick mich!</string>
+
     <string name="ENW_Header">Willkommen in Europa</string>
     <string name="MENU_CONTROL_BACK">Zurück</string>
     <string name="MENU_CONTROL_NEXT">Weiter</string>
