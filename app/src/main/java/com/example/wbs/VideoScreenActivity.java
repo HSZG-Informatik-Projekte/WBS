@@ -27,7 +27,7 @@ public class VideoScreenActivity extends AppCompatActivity {
 
         videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.europe);
 
-        //videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
+        videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
 
         playButton =findViewById(R.id.playButtonID);
 
