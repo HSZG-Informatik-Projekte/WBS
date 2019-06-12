@@ -14,12 +14,7 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     UserProfileClass() {
         this.isProfile = false;
-
-        //saveToFile();
-    }
-
-    private void saveToFile() {
-        JsonUtil.WBSProfileToJson(this);
+        
     }
 
     public String getName() {
