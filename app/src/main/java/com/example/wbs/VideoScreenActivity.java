@@ -4,27 +4,33 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.VideoView;
 
 public class VideoScreenActivity extends AppCompatActivity {
 
     VideoView videoView;
-    Boolean playing = false;
+    Boolean playing = false,started=false;
     ImageButton playButton,continueButton;
-    Integer videoNumber;
+    int videoNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_screen);
-        videoNumber= (Integer) getIntent().getExtras().getSerializable("videoNumber");
+
+        final Animation animAlpha = AnimationUtils.loadAnimation(this,R.anim.anim_alpha);
 
         videoView = findViewById(R.id.videoViewID);
 
         videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.europe);
 
+        //videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
+
         playButton =findViewById(R.id.playButtonID);
+
         continueButton = findViewById(R.id.continueButtonID);
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -36,25 +42,38 @@ public class VideoScreenActivity extends AppCompatActivity {
                 continueButton.setVisibility(View.GONE);
             }
         });
+
         playButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (playing == false) {
+                if (!started) {
                     playButton.setImageResource(R.drawable.play);
                     videoView.start();
                     playButton.setVisibility(View.GONE);
-                    playing = true;
+                    playing=true;
+                    started=true;
                 }
             }
-        } );
+        });
+
         videoView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(playing==true){
+                if(playing){
                     videoView.pause();
                     playing=false;
+                    playButton.setImageResource(R.drawable.pause);
                     playButton.setVisibility(View.VISIBLE);
+                    playButton.startAnimation(animAlpha);
                 }
+                else{
+                    videoView.start();
+                    playing =true;
+                    playButton.setImageResource(R.drawable.play);
+                    playButton.setVisibility(View.VISIBLE);
+                    playButton.startAnimation(animAlpha);
+                }
+                playButton.setVisibility(View.GONE);
             }
         } );
     }
