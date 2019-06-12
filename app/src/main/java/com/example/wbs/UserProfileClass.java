@@ -1,10 +1,6 @@
 package com.example.wbs;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.preference.PreferenceManager;
-
 import java.io.Serializable;
 
 public class UserProfileClass implements Serializable  { // extends Activity
@@ -16,7 +12,6 @@ public class UserProfileClass implements Serializable  { // extends Activity
     private Color color;
     private boolean isProfile;
 
-    //private SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
     UserProfileClass() {
         this.isProfile = false;
@@ -25,32 +20,6 @@ public class UserProfileClass implements Serializable  { // extends Activity
         //setAge(getStoreValues("AGE", 0));
         //setFollower(getStoreValues("FOLLOWER", 0));
         //setColor(Color.toArgb(getStoreValues("COLOR","#000000")));
-    }
-
-    //SET STRING
-    public void setStoreValues(String key, String value) {
-/*        SharedPreferences.Editor edit = app_preferences.edit();
-        edit.putString(key, value);
-        edit.commit();
-        edit.apply();
-  */  }
-    //GET STRING
-    public String getStoreValues(String key, String def) {
- //       return app_preferences.getString(key, def);
-        return "";
-    }
-
-    //SET INTEGER
-    public void setStoreValues(String key, Integer value) {
-  /*      SharedPreferences.Editor edit = app_preferences.edit();
-        edit.putInt(key, value);
-        edit.commit();
-        edit.apply();
-  */  }
-    //GET INTEGER
-    public Integer getStoreValues(String key, Integer def) {
-  //      return app_preferences.getInt(key, def);
-        return 0;
     }
 
     public String getName() {
