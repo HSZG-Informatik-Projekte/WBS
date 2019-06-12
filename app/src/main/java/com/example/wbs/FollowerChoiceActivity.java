@@ -65,6 +65,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
                 Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
+                finish();
             }
         });
 
@@ -76,6 +77,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
                 Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, CreateProfileActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
+                finish();
             }
         });
 
