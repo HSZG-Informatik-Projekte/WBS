@@ -14,7 +14,7 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     UserProfileClass() {
         this.isProfile = false;
-        
+
     }
 
     public String getName() {
