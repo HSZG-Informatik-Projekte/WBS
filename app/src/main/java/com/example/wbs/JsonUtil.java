@@ -1,6 +1,7 @@
 package com.example.wbs;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,40 +109,17 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
+
+            //Beispiel
+            Log.i("#testJSON Video", jsonObj.toString());
+            JSONArray jArr = jsonObj.getJSONArray("videofiledetails");
+            Log.i("#testJSON obj1", jArr.getJSONObject(1).toString());
+            Log.i("#testJSON obj1 name", jArr.getJSONObject(1).get("name").toString());
+
             return jsonObj;
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public static void VideoToJson(Context context, List<VideoClass> vcs) {
-        JSONObject jsonObj = new JSONObject();
-
-        try {
-            for (VideoClass vc : vcs) {
-                JSONObject jObj = new JSONObject();
-                jObj.put("id", vc.getId());
-                jObj.put("name", vc.getName());
-                jObj.put("path", vc.getPath());
-                jObj.put("length", vc.getLenght());
-                jsonObj.put("" + vc.getId(), jObj);
-            }
-        } catch (JSONException ex) {
-            ex.printStackTrace();
-        }
-
-        File file = new File(context.getFilesDir(), VIDEO_FILE_NAME);
-        FileOutputStream outputStream = null;
-        try {
-            file.createNewFile();
-            outputStream = new FileOutputStream(file, true);
-
-            outputStream.write(jsonObj.toString().getBytes());
-            outputStream.flush();
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
