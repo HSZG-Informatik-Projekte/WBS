@@ -3,8 +3,9 @@ package com.example.wbs;
 public class VideoClass {
     private int id;
     private String name;
-    private String path;
-    private int lenght;
+    private String description;
+    private String filepath;
+    private int duration;
 
 
     public int getId() {
@@ -23,19 +24,27 @@ public class VideoClass {
         this.name = name;
     }
 
-    public String getPath() {
-        return path;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
-    public int getLenght() {
-        return lenght;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLenght(int lenght) {
-        this.lenght = lenght;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
     }
 }
