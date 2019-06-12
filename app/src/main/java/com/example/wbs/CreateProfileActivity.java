@@ -35,6 +35,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 Intent mySuperIntent = new Intent(CreateProfileActivity.this, FollowerChoiceActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
+                finish();
             }
         });
 

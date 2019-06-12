@@ -11,36 +11,38 @@ public class VideoScreenActivity extends AppCompatActivity {
 
     VideoView videoView;
     Boolean playing = false;
-    ImageButton playbutton,continuebutton;
+    ImageButton playButton,continueButton;
+    Integer videoNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_screen);
+        videoNumber= (Integer) getIntent().getExtras().getSerializable("videoNumber");
 
         videoView = findViewById(R.id.videoViewID);
 
         videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.europe);
 
-        playbutton =findViewById(R.id.playButtonID);
-        continuebutton = findViewById(R.id.continueButtonID);
+        playButton =findViewById(R.id.playButtonID);
+        continueButton = findViewById(R.id.continueButtonID);
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 playing=false;
-                playbutton.setVisibility(View.VISIBLE);
-                playbutton.setImageResource(R.drawable.repeat);
-                continuebutton.setVisibility(View.GONE);
+                playButton.setVisibility(View.VISIBLE);
+                playButton.setImageResource(R.drawable.repeat);
+                continueButton.setVisibility(View.GONE);
             }
         });
-        playbutton.setOnClickListener(new View.OnClickListener(){
+        playButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 if (playing == false) {
-                    playbutton.setImageResource(R.drawable.play);
+                    playButton.setImageResource(R.drawable.play);
                     videoView.start();
-                    playbutton.setVisibility(View.GONE);
+                    playButton.setVisibility(View.GONE);
                     playing = true;
                 }
             }
@@ -51,7 +53,7 @@ public class VideoScreenActivity extends AppCompatActivity {
                 if(playing==true){
                     videoView.pause();
                     playing=false;
-                    playbutton.setVisibility(View.VISIBLE);
+                    playButton.setVisibility(View.VISIBLE);
                 }
             }
         } );
