@@ -24,6 +24,7 @@ public class EnterNewWorldActivity extends AppCompatActivity {
              public void onClick(View v) {
                  Intent mySuperIntent = new Intent(EnterNewWorldActivity.this, VideoScreenActivity.class);
                  mySuperIntent.putExtra("wbsProfile", wbsProfile);
+                 mySuperIntent.putExtra("videoNumber", 0);
                  startActivity(mySuperIntent);
              }
          });
