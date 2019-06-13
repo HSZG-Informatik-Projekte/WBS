@@ -36,14 +36,13 @@
         android:id="@+id/continueButtonID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="#00FFFFFF"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/videoViewID"
         app:layout_constraintEnd_toEndOf="@+id/videoViewID"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="@+id/videoViewID"
-        app:layout_constraintTop_toBottomOf="@+id/playButtonID"
-        app:layout_constraintVertical_bias="0.057"
+        app:layout_constraintTop_toTopOf="@+id/videoViewID"
+        app:layout_constraintVertical_bias="0.974"
         app:srcCompat="@drawable/pause" />
 </android.support.constraint.ConstraintLayout>
