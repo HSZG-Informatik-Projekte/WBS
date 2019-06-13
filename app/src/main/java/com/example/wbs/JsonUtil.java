@@ -46,7 +46,7 @@ public class JsonUtil {
 
             UserProfileClass upc = new UserProfileClass(
                     jsonObj.getString("name"),
-                    jsonObj.getString("gender") == UserProfileClass.Gender.MALE.toString() ? UserProfileClass.Gender.MALE : UserProfileClass.Gender.FEMALE,
+                    UserProfileClass.Gender.getGender(jsonObj.getString("gender")),
                     jsonObj.getInt("age"),
                     jsonObj.getInt("follower"),
                     jsonObj.getString("color")
