@@ -1,7 +1,6 @@
 package com.example.wbs;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,16 +8,10 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
-import java.util.List;
+import java.util.ArrayList;
 
 public class JsonUtil {
 
@@ -26,7 +19,7 @@ public class JsonUtil {
     private static final String VIDEO_FILE_NAME = "wbs_videos.json";
 
 
-    public static JSONObject readProfileFromJson(Context context) {
+    public static UserProfileClass readProfileFromJson(Context context) {
         StringBuilder brString = new StringBuilder();
 
         BufferedReader reader = null;
@@ -50,7 +43,15 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
-            return jsonObj;
+
+            UserProfileClass upc = new UserProfileClass(
+                    jsonObj.getString("name"),
+                    jsonObj.getString("gender") == UserProfileClass.Gender.MALE.toString() ? UserProfileClass.Gender.MALE : UserProfileClass.Gender.FEMALE,
+                    jsonObj.getInt("age"),
+                    jsonObj.getInt("follower"),
+                    jsonObj.getString("color")
+            );
+            return upc;
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -85,7 +86,7 @@ public class JsonUtil {
         }
     }
 
-    public static JSONObject readVideoFromJson(Context context) {
+    public static ArrayList<VideoClass> readVideoFromJson(Context context) {
         StringBuilder brString = new StringBuilder();
 
         BufferedReader reader = null;
@@ -109,14 +110,21 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
+            JSONArray jArrAll = jsonObj.getJSONArray("videofiledetails");
+            ArrayList<VideoClass> videoClass = new ArrayList<VideoClass>(jArrAll.length());
 
-            //Beispiel
-            Log.i("#testJSON Video", jsonObj.toString());
-            JSONArray jArr = jsonObj.getJSONArray("videofiledetails");
-            Log.i("#testJSON obj1", jArr.getJSONObject(1).toString());
-            Log.i("#testJSON obj1 name", jArr.getJSONObject(1).get("name").toString());
+            for(int i = 0; i < jArrAll.length(); i++) {
+                VideoClass vc = new VideoClass(
+                        jArrAll.getJSONObject(i).getInt("videofileid"),
+                        jArrAll.getJSONObject(i).getString("name"),
+                        jArrAll.getJSONObject(i).getString("description"),
+                        jArrAll.getJSONObject(i).getString("filepath"),
+                        jArrAll.getJSONObject(i).getInt("duration")
+                );
+                videoClass.add(vc);
+            }
 
-            return jsonObj;
+            return videoClass;
         } catch (JSONException e) {
             e.printStackTrace();
         }
