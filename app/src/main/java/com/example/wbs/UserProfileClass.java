@@ -1,6 +1,6 @@
 package com.example.wbs;
 
-import android.graphics.Color;
+import android.content.Context;
 import java.io.Serializable;
 
 public class UserProfileClass implements Serializable  { // extends Activity
@@ -9,12 +9,29 @@ public class UserProfileClass implements Serializable  { // extends Activity
     private Gender gender;
     private int age;
     private int follower;
-    private Color color;
+    private String color;
     private boolean isProfile;
 
-    UserProfileClass() {
-        this.isProfile = false;
+    UserProfileClass(String name,Gender gender,int age,int follower,String color) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.follower = follower;
+        this.color = color;
+    }
 
+    UserProfileClass(Context context) {
+        UserProfileClass tmp = JsonUtil.readProfileFromJson(context);
+        if ( tmp != null) {
+            this.name = tmp.getName();
+            this.gender = tmp.getGender();
+            this.age = tmp.getAge();
+            this.follower = tmp.getFollower();
+            this.color = tmp.getColor();
+            this.isProfile = true;
+        } else {
+            this.isProfile = false;
+        }
     }
 
     public String getName() {
@@ -49,11 +66,11 @@ public class UserProfileClass implements Serializable  { // extends Activity
         this.follower = follower;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
