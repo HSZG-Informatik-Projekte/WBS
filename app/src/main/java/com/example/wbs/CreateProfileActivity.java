@@ -1,19 +1,14 @@
 package com.example.wbs;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class CreateProfileActivity extends AppCompatActivity {
 
@@ -22,10 +17,33 @@ public class CreateProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_profile);
+
+        Log.i("BLT CPA [1]", "TEST");
 
         wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
 
-        setContentView(R.layout.activity_create_profile);
+        Log.i("BLT CPA [2]", "TEST");
+
+        if (wbsProfile != null) {
+            final TextView TxtName = findViewById(R.id.CPA_edit_name);
+            TxtName.setText("" + wbsProfile.getName());
+
+            Log.i("BLT CPA [3]", "TEST");
+
+            final TextView TxtAge = findViewById(R.id.CPA_edit_age);
+            TxtAge.setText("" + wbsProfile.getAge());
+        }
+
+
+        Log.i("BLT CPA [4]", "TEST");
+
+        final Button ButtonFemale = findViewById(R.id.CPA_button_female);
+        final Button ButtonMale = findViewById(R.id.CPA_button_male);
+
+        Log.i("BLT CPA [5]", "TEST");
+
+
 
         Button nextActivity = findViewById(R.id.CPA_button_next);
 
@@ -39,8 +57,6 @@ public class CreateProfileActivity extends AppCompatActivity {
             }
         });
 
-        final Button ButtonFemale = findViewById(R.id.CPA_button_female);
-        final Button ButtonMale = findViewById(R.id.CPA_button_male);
 
         ButtonFemale.setOnClickListener(new View.OnClickListener() {
             @Override
