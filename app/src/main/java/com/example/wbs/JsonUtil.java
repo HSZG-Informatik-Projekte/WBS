@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ public class JsonUtil {
 
     public static UserProfileClass readProfileFromJson(Context context) {
         StringBuilder brString = new StringBuilder();
-
+        File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(PROFILE_FILE_NAME), "UTF-8"));
+            reader = new BufferedReader(new FileReader(file));
             String mLine;
             while ((mLine = reader.readLine()) != null) {
                 brString.append(mLine);
