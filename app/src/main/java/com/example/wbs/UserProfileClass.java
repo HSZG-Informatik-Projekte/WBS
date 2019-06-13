@@ -84,5 +84,9 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public enum Gender {
         MALE, FEMALE;
+
+        public static Gender getGender(String s) {
+            return s == MALE.toString() ? MALE : FEMALE;
+        }
     };
 }
