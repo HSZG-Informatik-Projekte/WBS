@@ -7,6 +7,13 @@ public class VideoClass {
     private String filepath;
     private int duration;
 
+    VideoClass(int id, String name, String description,String filepath, int duration) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.filepath = filepath;
+        this.duration = duration;
+    }
 
     public int getId() {
         return id;
