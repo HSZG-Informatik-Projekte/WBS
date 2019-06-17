@@ -16,12 +16,15 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class JsonUtil {
-
     private static final String PROFILE_FILE_NAME = "wbs_profile.json";
     private static final String VIDEO_FILE_NAME = "wbs_videos.json";
 
+    public static void DeletProfile(Context context) {
+        File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
+        file.delete();
+    }
 
-    public static UserProfileClass readProfileFromJson(Context context) {
+    public static JSONObject readProfileFromJson(Context context) {
         StringBuilder brString = new StringBuilder();
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         BufferedReader reader = null;
@@ -45,20 +48,7 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
-
-
-            Log.i("BLT JUTIL", "READ: jsonObj: " + jsonObj);
-            Log.i("BLT JUTIL", "READ: getFilesDir: " + file.getAbsolutePath());
-
-            UserProfileClass upc = new UserProfileClass(
-                    jsonObj.getString("name"),
-                    UserProfileClass.Gender.getGender(jsonObj.getString("gender")),
-                    jsonObj.getInt("age"),
-                    jsonObj.getInt("follower"),
-                    jsonObj.getString("color")
-            );
-            Log.i("BLT JUTIL [upc]", "" + upc);
-            return upc;
+            return jsonObj;
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -88,7 +78,7 @@ public class JsonUtil {
         FileOutputStream outputStream = null;
         try {
             file.createNewFile();
-            outputStream = new FileOutputStream(file, true);
+            outputStream = new FileOutputStream(file, false);
 
             outputStream.write(jsonObj.toString().getBytes());
             outputStream.flush();

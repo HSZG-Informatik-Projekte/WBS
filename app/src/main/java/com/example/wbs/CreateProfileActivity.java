@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class CreateProfileActivity extends AppCompatActivity {
 
@@ -21,22 +20,15 @@ public class CreateProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
-        Log.i("BLT CPA [1]", "TEST");
-
         wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
 
-        Log.i("BLT CPA [2]", "TEST");
-
-        final TextView TxtName = findViewById(R.id.CPA_edit_age);
-        final TextView TxtAge = findViewById(R.id.CPA_edit_name);
+        final EditText TxtName = findViewById(R.id.CPA_edit_name);
+        final EditText TxtAge = findViewById(R.id.CPA_edit_age);
         TxtName.setText("");
         TxtAge.setText("");
 
         if (wbsProfile.getisProfile()) {
             TxtName.setText("" + wbsProfile.getName());
-
-            Log.i("BLT CPA [3]", "set wbsProfile infos");
-
             TxtAge.setText("" + wbsProfile.getAge());
         }
 
@@ -100,18 +92,5 @@ public class CreateProfileActivity extends AppCompatActivity {
                 wbsProfile.setGender(UserProfileClass.Gender.MALE);
             }
         });
-
-        final EditText EditTextName = findViewById(R.id.CPA_edit_age);
-        EditTextName.requestFocus();
-        final EditText EditTextAge = findViewById(R.id.CPA_edit_name);
-
-        /*
-        EditTextName.addTextChangedListener(new TextWatcher() {
-               public void afterTextChanged(Editable s) {
-
-               }
-            }
-
-        );*/
     }
 }

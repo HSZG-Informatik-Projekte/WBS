@@ -1,6 +1,10 @@
 package com.example.wbs;
 
 import android.content.Context;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class UserProfileClass implements Serializable  { // extends Activity
@@ -21,13 +25,18 @@ public class UserProfileClass implements Serializable  { // extends Activity
     }
 
     UserProfileClass(Context context) {
-        UserProfileClass tmp = JsonUtil.readProfileFromJson(context);
+        JSONObject tmp = JsonUtil.readProfileFromJson(context);
+
         if ( tmp != null) {
-            this.name = tmp.getName();
-            this.gender = tmp.getGender();
-            this.age = tmp.getAge();
-            this.follower = tmp.getFollower();
-            this.color = tmp.getColor();
+            try {
+                this.name = tmp.getString("name");
+                this.gender = Gender.getGender(tmp.getString("gender"));
+                this.age = tmp.getInt("age");
+                this.follower = tmp.getInt("follower");
+                this.color = tmp.getString("color");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             this.isProfile = true;
         } else {
             this.isProfile = false;

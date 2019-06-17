@@ -17,6 +17,12 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        /* DEBUG
+        *  vor start Profil Datei löschen
+        */
+        JsonUtil.DeletProfile(this);
+
+
         wbsProfile = new UserProfileClass(this);
 
         new Handler().postDelayed(new Runnable() {
