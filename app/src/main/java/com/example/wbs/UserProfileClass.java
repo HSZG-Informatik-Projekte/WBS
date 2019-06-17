@@ -1,6 +1,10 @@
 package com.example.wbs;
 
-import android.graphics.Color;
+import android.content.Context;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class UserProfileClass implements Serializable  { // extends Activity
@@ -9,12 +13,34 @@ public class UserProfileClass implements Serializable  { // extends Activity
     private Gender gender;
     private int age;
     private int follower;
-    private Color color;
+    private String color;
     private boolean isProfile;
 
-    UserProfileClass() {
-        this.isProfile = false;
+    UserProfileClass(String name,Gender gender,int age,int follower,String color) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.follower = follower;
+        this.color = color;
+    }
 
+    UserProfileClass(Context context) {
+        JSONObject tmp = JsonUtil.readProfileFromJson(context);
+
+        if ( tmp != null) {
+            try {
+                this.name = tmp.getString("name");
+                this.gender = Gender.getGender(tmp.getString("gender"));
+                this.age = tmp.getInt("age");
+                this.follower = tmp.getInt("follower");
+                this.color = tmp.getString("color");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            this.isProfile = true;
+        } else {
+            this.isProfile = false;
+        }
     }
 
     public String getName() {
@@ -49,11 +75,11 @@ public class UserProfileClass implements Serializable  { // extends Activity
         this.follower = follower;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -67,5 +93,9 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public enum Gender {
         MALE, FEMALE;
+
+        public static Gender getGender(String s) {
+            return s == MALE.toString() ? MALE : FEMALE;
+        }
     };
 }

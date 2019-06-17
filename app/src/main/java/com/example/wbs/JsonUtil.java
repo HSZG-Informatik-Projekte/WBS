@@ -9,29 +9,27 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
-import java.util.List;
+import java.util.ArrayList;
 
 public class JsonUtil {
-
     private static final String PROFILE_FILE_NAME = "wbs_profile.json";
     private static final String VIDEO_FILE_NAME = "wbs_videos.json";
 
+    public static void DeletProfile(Context context) {
+        File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
+        file.delete();
+    }
 
     public static JSONObject readProfileFromJson(Context context) {
         StringBuilder brString = new StringBuilder();
-
+        File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(PROFILE_FILE_NAME), "UTF-8"));
+            reader = new BufferedReader(new FileReader(file));
             String mLine;
             while ((mLine = reader.readLine()) != null) {
                 brString.append(mLine);
@@ -71,11 +69,16 @@ public class JsonUtil {
             ex.printStackTrace();
         }
 
+        Log.i("BLT JUTIL", "WRITE: jsonObj: " + jsonObj);
+
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
+
+        Log.i("BLT JUTIL", "WRITE: getFilesDir: " + file.getAbsolutePath());
+
         FileOutputStream outputStream = null;
         try {
             file.createNewFile();
-            outputStream = new FileOutputStream(file, true);
+            outputStream = new FileOutputStream(file, false);
 
             outputStream.write(jsonObj.toString().getBytes());
             outputStream.flush();
@@ -85,7 +88,7 @@ public class JsonUtil {
         }
     }
 
-    public static JSONObject readVideoFromJson(Context context) {
+    public static ArrayList<VideoClass> readVideoFromJson(Context context) {
         StringBuilder brString = new StringBuilder();
 
         BufferedReader reader = null;
@@ -109,14 +112,21 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
+            JSONArray jArrAll = jsonObj.getJSONArray("videofiledetails");
+            ArrayList<VideoClass> videoClass = new ArrayList<VideoClass>(jArrAll.length());
 
-            //Beispiel
-            Log.i("#testJSON Video", jsonObj.toString());
-            JSONArray jArr = jsonObj.getJSONArray("videofiledetails");
-            Log.i("#testJSON obj1", jArr.getJSONObject(1).toString());
-            Log.i("#testJSON obj1 name", jArr.getJSONObject(1).get("name").toString());
+            for(int i = 0; i < jArrAll.length(); i++) {
+                VideoClass vc = new VideoClass(
+                        jArrAll.getJSONObject(i).getInt("videofileid"),
+                        jArrAll.getJSONObject(i).getString("name"),
+                        jArrAll.getJSONObject(i).getString("description"),
+                        jArrAll.getJSONObject(i).getString("filepath"),
+                        jArrAll.getJSONObject(i).getInt("duration")
+                );
+                videoClass.add(vc);
+            }
 
-            return jsonObj;
+            return videoClass;
         } catch (JSONException e) {
             e.printStackTrace();
         }

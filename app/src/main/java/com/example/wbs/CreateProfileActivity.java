@@ -1,17 +1,13 @@
 package com.example.wbs;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -22,16 +18,29 @@ public class CreateProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_profile);
 
         wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
 
-        setContentView(R.layout.activity_create_profile);
+        final EditText TxtName = findViewById(R.id.CPA_edit_name);
+        final EditText TxtAge = findViewById(R.id.CPA_edit_age);
+        TxtName.setText("");
+        TxtAge.setText("");
+
+        if (wbsProfile.getisProfile()) {
+            TxtName.setText("" + wbsProfile.getName());
+            TxtAge.setText("" + wbsProfile.getAge());
+        }
+
+        final Button ButtonFemale = findViewById(R.id.CPA_button_female);
+        final Button ButtonMale = findViewById(R.id.CPA_button_male);
 
         Button nextActivity = findViewById(R.id.CPA_button_next);
 
         nextActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                JsonUtil.WBSProfileToJson(CreateProfileActivity.this, wbsProfile);
                 Intent mySuperIntent = new Intent(CreateProfileActivity.this, FollowerChoiceActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
@@ -39,8 +48,30 @@ public class CreateProfileActivity extends AppCompatActivity {
             }
         });
 
-        final Button ButtonFemale = findViewById(R.id.CPA_button_female);
-        final Button ButtonMale = findViewById(R.id.CPA_button_male);
+        TxtName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                wbsProfile.setName(s.toString());
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        });
+
+        TxtAge.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    wbsProfile.setAge(Integer.parseInt(s.toString()));
+                } catch (NumberFormatException e) {
+                }
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        });
 
         ButtonFemale.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,18 +92,5 @@ public class CreateProfileActivity extends AppCompatActivity {
                 wbsProfile.setGender(UserProfileClass.Gender.MALE);
             }
         });
-
-        final EditText EditTextName = findViewById(R.id.CPA_edit_name);
-        EditTextName.requestFocus();
-        final EditText EditTextAge = findViewById(R.id.CPA_edit_age);
-
-        /*
-        EditTextName.addTextChangedListener(new TextWatcher() {
-               public void afterTextChanged(Editable s) {
-
-               }
-            }
-
-        );*/
     }
 }
