@@ -62,6 +62,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
                 Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
@@ -74,6 +75,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         ButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
                 Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, CreateProfileActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);

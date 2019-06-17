@@ -1,6 +1,7 @@
 package com.example.wbs;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +46,10 @@ public class JsonUtil {
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
 
+
+            Log.i("BLT JUTIL", "READ: jsonObj: " + jsonObj);
+            Log.i("BLT JUTIL", "READ: getFilesDir: " + file.getAbsolutePath());
+
             UserProfileClass upc = new UserProfileClass(
                     jsonObj.getString("name"),
                     UserProfileClass.Gender.getGender(jsonObj.getString("gender")),
@@ -52,6 +57,7 @@ public class JsonUtil {
                     jsonObj.getInt("follower"),
                     jsonObj.getString("color")
             );
+            Log.i("BLT JUTIL [upc]", "" + upc);
             return upc;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -73,7 +79,12 @@ public class JsonUtil {
             ex.printStackTrace();
         }
 
+        Log.i("BLT JUTIL", "WRITE: jsonObj: " + jsonObj);
+
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
+
+        Log.i("BLT JUTIL", "WRITE: getFilesDir: " + file.getAbsolutePath());
+
         FileOutputStream outputStream = null;
         try {
             file.createNewFile();

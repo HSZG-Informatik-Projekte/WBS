@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,31 +27,28 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         Log.i("BLT CPA [2]", "TEST");
 
-        if (wbsProfile != null) {
-            final TextView TxtName = findViewById(R.id.CPA_edit_name);
+        final TextView TxtName = findViewById(R.id.CPA_edit_age);
+        final TextView TxtAge = findViewById(R.id.CPA_edit_name);
+        TxtName.setText("");
+        TxtAge.setText("");
+
+        if (wbsProfile.getisProfile()) {
             TxtName.setText("" + wbsProfile.getName());
 
-            Log.i("BLT CPA [3]", "TEST");
+            Log.i("BLT CPA [3]", "set wbsProfile infos");
 
-            final TextView TxtAge = findViewById(R.id.CPA_edit_age);
             TxtAge.setText("" + wbsProfile.getAge());
         }
 
-
-        Log.i("BLT CPA [4]", "TEST");
-
         final Button ButtonFemale = findViewById(R.id.CPA_button_female);
         final Button ButtonMale = findViewById(R.id.CPA_button_male);
-
-        Log.i("BLT CPA [5]", "TEST");
-
-
 
         Button nextActivity = findViewById(R.id.CPA_button_next);
 
         nextActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                JsonUtil.WBSProfileToJson(CreateProfileActivity.this, wbsProfile);
                 Intent mySuperIntent = new Intent(CreateProfileActivity.this, FollowerChoiceActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
@@ -57,6 +56,30 @@ public class CreateProfileActivity extends AppCompatActivity {
             }
         });
 
+        TxtName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                wbsProfile.setName(s.toString());
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        });
+
+        TxtAge.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    wbsProfile.setAge(Integer.parseInt(s.toString()));
+                } catch (NumberFormatException e) {
+                }
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        });
 
         ButtonFemale.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +101,9 @@ public class CreateProfileActivity extends AppCompatActivity {
             }
         });
 
-        final EditText EditTextName = findViewById(R.id.CPA_edit_name);
+        final EditText EditTextName = findViewById(R.id.CPA_edit_age);
         EditTextName.requestFocus();
-        final EditText EditTextAge = findViewById(R.id.CPA_edit_age);
+        final EditText EditTextAge = findViewById(R.id.CPA_edit_name);
 
         /*
         EditTextName.addTextChangedListener(new TextWatcher() {
