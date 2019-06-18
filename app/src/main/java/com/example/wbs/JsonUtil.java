@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class JsonUtil {
     private static final String PROFILE_FILE_NAME = "wbs_profile.json";
     private static final String VIDEO_FILE_NAME = "wbs_videos.json";
+    private static final String QUESTION_FILE_NAME = "wbs_questions.json";
 
     public static void DeletProfile(Context context) {
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
@@ -128,6 +129,57 @@ public class JsonUtil {
 
             return videoClass;
         } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<QuestionClass> readQuestionFromJson(Context context) {
+        StringBuilder brString = new StringBuilder();
+
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(QUESTION_FILE_NAME), "UTF-8"));
+            String mLine;
+            while ((mLine = reader.readLine()) != null) {
+                brString.append(mLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        try {
+            JSONObject jsonObj = new JSONObject(brString.toString());
+
+            JSONArray jQuestion = jsonObj.getJSONArray("questions");
+
+            ArrayList<QuestionClass> questionClass = new ArrayList<QuestionClass>(jQuestion.length());
+
+            for(int i = 0; i < jQuestion.length(); i++) {
+                JSONObject jAnwers = new JSONObject(jQuestion.getJSONObject(i).getString("answers"));
+                ArrayList<String> anwers = new ArrayList<>(jAnwers.length());
+                for (int j = 1; j <= jAnwers.length(); j++) {
+                    anwers.add(jAnwers.getString(""+j));
+                }
+                QuestionClass qc = new QuestionClass(
+                        jQuestion.getJSONObject(i).getInt("id"),
+                        jQuestion.getJSONObject(i).getString("question"),
+                        jQuestion.getJSONObject(i).getString("right"),
+                        anwers
+                );
+                questionClass.add(qc);
+            }
+
+            return questionClass;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

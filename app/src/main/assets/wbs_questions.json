@@ -1,0 +1,43 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Wie verhälst du dich?",
+      "answers": {
+        "1": "Ich gehe dem Fremden aus dem Weg.",
+        "2": "Ich liebe Schokolade und nehme sie gern an."
+      },
+      "right": "1"
+    },
+    {
+      "id": 2,
+      "question": "Wie verhälst du dich?",
+      "answers": {
+        "1": "A Hier geht das ab",
+        "2": "B Hier geht das ab.",
+        "3": "C geht das ab"
+      },
+      "right": "3"
+    },
+    {
+      "id": 2,
+      "question": "Wie verhälst du dich?",
+      "answers": {
+        "1": "A Hier geht das ab",
+        "2": "B Hier geht das ab",
+        "3": "C Hier geht das ab",
+        "4": "D Hier geht das ab"
+      },
+      "right": "3"
+    },
+    {
+      "id": 2,
+      "question": "Wie verhälst du dich?",
+      "answers": {
+        "1": "A Hier geht das ab",
+        "2": "B Hier geht das ab"
+      },
+      "right": "2"
+    }
+  ]
+}
