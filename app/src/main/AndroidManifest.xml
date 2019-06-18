@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/FullScreen">
         <activity android:name=".QuestionActivity"></activity>
-        <activity android:name=".ShowProfileActivity" />
+        <activity
+            android:name=".ShowProfileActivity"
+            android:theme="@style/FullScreenWithActionBar" />
         <activity
             android:name=".VideoScreenActivity"
             android:label="VideoScreenActivity"

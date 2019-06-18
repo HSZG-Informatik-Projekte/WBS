@@ -10,7 +10,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private UserProfileClass wbsProfile;
 
-    private static int SPLASH_TIME = 2000; //This is 2 seconds
+    private static int SPLASH_TIME = 500; //This is 2 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

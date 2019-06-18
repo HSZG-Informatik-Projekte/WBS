@@ -2,6 +2,7 @@ package com.example.wbs;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,16 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        ImageView fab = findViewById(R.id.MA_floatingActionButton);
+        FloatingActionButton fab = findViewById(R.id.MA_floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mySuperIntent = new Intent(MainActivity.this, ShowProfileActivity.class);
+                mySuperIntent.putExtra("wbsProfile", wbsProfile);
+                startActivity(mySuperIntent);
+            }
+        });
+
 
         ImageView image = findViewById(R.id.MA_imageview_1);
         image.setOnClickListener(new View.OnClickListener() {
