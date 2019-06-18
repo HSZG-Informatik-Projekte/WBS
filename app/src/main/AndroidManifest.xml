@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullScreen">
+        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name=".ShowProfileActivity" />
         <activity
             android:name=".VideoScreenActivity"
             android:label="VideoScreenActivity"
@@ -42,7 +44,7 @@
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/FullScreenWithActionBar" />
+            android:theme="@style/FullScreen.NoActionBar" />
     </application>
 
 </manifest>

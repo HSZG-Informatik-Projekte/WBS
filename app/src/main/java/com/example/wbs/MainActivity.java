@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        ImageView fab = findViewById(R.id.MA_floatingActionButton);
+
         ImageView image = findViewById(R.id.MA_imageview_1);
         image.setOnClickListener(new View.OnClickListener() {
             @Override

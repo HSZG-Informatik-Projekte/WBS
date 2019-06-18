@@ -20,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
         /* DEBUG
         *  vor start Profil Datei löschen
         */
-        JsonUtil.DeletProfile(this);
+        //JsonUtil.DeletProfile(this);
 
 
         wbsProfile = new UserProfileClass(this);

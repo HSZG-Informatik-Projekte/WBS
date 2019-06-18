@@ -28,6 +28,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         final Button ButtonFemale = findViewById(R.id.CPA_button_female);
         final Button ButtonMale = findViewById(R.id.CPA_button_male);
         final Button nextActivity = findViewById(R.id.CPA_button_next);
+        final Button changeActivityProfile = findViewById(R.id.CPA_button_next);
 
         //nextActivity.setEnabled(false);
         TxtName.setText("");
