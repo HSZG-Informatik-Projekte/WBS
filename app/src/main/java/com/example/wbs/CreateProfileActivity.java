@@ -2,6 +2,7 @@ package com.example.wbs;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -76,7 +77,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         ButtonFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ButtonFemale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderpink.xml"));
+                ButtonFemale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderpink"));
                 ButtonFemale.setBackgroundColor(Color.rgb(0xff, 0x69, 0xb4));//0x3F51B5);
                 ButtonMale.setBackgroundResource(0);
                 wbsProfile.setGender(UserProfileClass.Gender.FEMALE);
@@ -87,8 +88,10 @@ public class CreateProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ButtonMale.setBackgroundColor(Color.rgb(0x3f, 0x51, 0xb5));
+                //ButtonMale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderblue"));
+                //ButtonMale.setBackground(Drawable.createFromPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier("mybuttonborderblue","drawable",""+getPackageName())));
+
                 ButtonFemale.setBackgroundResource(0);
-                //ButtonMale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderblue.xml"));
                 wbsProfile.setGender(UserProfileClass.Gender.MALE);
             }
         });

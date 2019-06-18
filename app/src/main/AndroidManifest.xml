@@ -15,7 +15,7 @@
         <activity
             android:name=".VideoScreenActivity"
             android:label="VideoScreenActivity"
-            android:theme="@style/FullScreen"/>
+            android:theme="@style/FullScreen" />
         <activity
             android:name=".EnterNewWorldActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -42,7 +42,7 @@
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/FullscreenTheme" />
+            android:theme="@style/FullScreenWithActionBar" />
     </application>
 
 </manifest>
