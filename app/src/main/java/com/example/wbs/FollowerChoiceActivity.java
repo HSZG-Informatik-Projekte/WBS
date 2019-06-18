@@ -53,7 +53,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
-
+        final boolean editProfile = (boolean) getIntent().getExtras().getSerializable("editProfile");
         setContentView(R.layout.activity_follower_choice);
 
         //NEXT BUTTON
@@ -63,7 +63,12 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
-                Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
+                Intent mySuperIntent;
+                if (editProfile) {
+                    mySuperIntent = new Intent(FollowerChoiceActivity.this, ShowProfileActivity.class);
+                } else {
+                    mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
+                }
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
                 finish();

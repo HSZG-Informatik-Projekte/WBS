@@ -4,6 +4,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
+    <string name="EMPTY"></string>
+
     <string name="CPA_Header">Profil anlegen</string>
     <string name="CPA_Name">Meine Name:</string>
     <string name="CPA_Edit_Name">Name</string>
@@ -20,7 +22,20 @@
 
     <string name="MA_Click">Klick mich!</string>
 
+    <string name="SPA_Head">Profil</string>
+    <string name="SPA_Name">Name</string>
+    <string name="SPA_Sex">Geschlecht</string>
+    <string name="SPA_Age">Alter</string>
+    <string name="SPA_Color">Lieblingsfarbe</string>
+    <string name="SPA_Rewards">Belohnungen</string>
+    <string name="SPA_Edit">Profil bearbeiten</string>
+
     <string name="ENWA_Header">Willkommen in Europa</string>
+    <string name="ENWA_Europe">Europa Karte</string>
+
+
+
+
     <string name="MENU_CONTROL_BACK">Zurück</string>
     <string name="MENU_CONTROL_NEXT">Weiter</string>
     <string name="title_activity_menu__test">Menu_Test</string>

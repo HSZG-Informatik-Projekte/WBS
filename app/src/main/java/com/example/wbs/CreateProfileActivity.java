@@ -54,6 +54,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 JsonUtil.WBSProfileToJson(CreateProfileActivity.this, wbsProfile);
                 Intent mySuperIntent = new Intent(CreateProfileActivity.this, FollowerChoiceActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
+                mySuperIntent.putExtra("editProfile", (boolean) getIntent().getExtras().getSerializable("editProfile"));
                 startActivity(mySuperIntent);
                 finish();
             }

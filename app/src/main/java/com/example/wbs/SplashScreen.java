@@ -39,6 +39,7 @@ public class SplashScreen extends AppCompatActivity {
                     mySuperIntent = new Intent(SplashScreen.this, CreateProfileActivity.class);
                 }
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
+                mySuperIntent.putExtra("editProfile", false);
                 startActivity(mySuperIntent);
                 /* This 'finish()' is for exiting the app when back button pressed
                  *  from Home page which is ActivityHome
