@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,13 +20,17 @@ public class CreateProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
-        wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
+        wbsProfile = JsonUtil.readProfileFromJson(this);
 
         final EditText TxtName = findViewById(R.id.CPA_edit_name);
         final EditText TxtAge = findViewById(R.id.CPA_edit_age);
         final Button ButtonFemale = findViewById(R.id.CPA_button_female);
         final Button ButtonMale = findViewById(R.id.CPA_button_male);
         final Button nextActivity = findViewById(R.id.CPA_button_next);
+        final Button ButtonColor_Yellow = findViewById(R.id.CPA_button_color_yellow);
+        final Button ButtonColor_Red = findViewById(R.id.CPA_button_color_red);
+        final Button ButtonColor_Blue = findViewById(R.id.CPA_button_color_blue);
+        final Button ButtonColor_Green = findViewById(R.id.CPA_button_color_green);
         final Button changeActivityProfile = findViewById(R.id.CPA_button_next);
 
         //nextActivity.setEnabled(false);
@@ -40,7 +43,6 @@ public class CreateProfileActivity extends AppCompatActivity {
             if (wbsProfile.getGender() == UserProfileClass.Gender.MALE) {
                 ButtonMale.setBackgroundColor(Color.rgb(0x3f, 0x51, 0xb5));
                 ButtonMale.setBackgroundResource(0);
-
             } else {
                 ButtonFemale.setBackgroundColor(Color.rgb(0xff, 0x69, 0xb4));
                 ButtonMale.setBackgroundResource(0);
@@ -53,8 +55,6 @@ public class CreateProfileActivity extends AppCompatActivity {
                 wbsProfile.setisProfile(true);
                 JsonUtil.WBSProfileToJson(CreateProfileActivity.this, wbsProfile);
                 Intent mySuperIntent = new Intent(CreateProfileActivity.this, FollowerChoiceActivity.class);
-                mySuperIntent.putExtra("wbsProfile", wbsProfile);
-                mySuperIntent.putExtra("editProfile", (boolean) getIntent().getExtras().getSerializable("editProfile"));
                 startActivity(mySuperIntent);
                 finish();
             }
@@ -104,6 +104,31 @@ public class CreateProfileActivity extends AppCompatActivity {
 
                 ButtonFemale.setBackgroundResource(0);
                 wbsProfile.setGender(UserProfileClass.Gender.MALE);
+            }
+        });
+
+        ButtonColor_Yellow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wbsProfile.setColor("#FFFF00");
+            }
+        });
+        ButtonColor_Red.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wbsProfile.setColor("#FF0000");
+            }
+        });
+        ButtonColor_Blue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wbsProfile.setColor("#0000FF");
+            }
+        });
+        ButtonColor_Green.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wbsProfile.setColor("#00FF00");
             }
         });
     }

@@ -1,10 +1,9 @@
 package com.example.wbs;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
         //JsonUtil.DeletProfile(this);
 
 
-        wbsProfile = new UserProfileClass(this);
+        wbsProfile = JsonUtil.readProfileFromJson(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -31,15 +30,11 @@ public class SplashScreen extends AppCompatActivity {
                 //Do any action here. Now we are moving to next page
                 Intent mySuperIntent;
 
-                Log.i("BLT SC [getisProfile()]", "" + wbsProfile.getisProfile());
-
-                if(wbsProfile.getisProfile() == true) {
+                if(wbsProfile.getisProfile()) {
                     mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
                 } else {
                     mySuperIntent = new Intent(SplashScreen.this, CreateProfileActivity.class);
                 }
-                mySuperIntent.putExtra("wbsProfile", wbsProfile);
-                mySuperIntent.putExtra("editProfile", false);
                 startActivity(mySuperIntent);
                 /* This 'finish()' is for exiting the app when back button pressed
                  *  from Home page which is ActivityHome

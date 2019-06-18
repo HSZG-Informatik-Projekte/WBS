@@ -25,7 +25,8 @@ public class JsonUtil {
         file.delete();
     }
 
-    public static JSONObject readProfileFromJson(Context context) {
+    public static UserProfileClass readProfileFromJson(Context context) {
+        Log.i("BTL", "start: " );
         StringBuilder brString = new StringBuilder();
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         BufferedReader reader = null;
@@ -49,11 +50,21 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
-            return jsonObj;
+            Log.i("BTL", "vor: " + jsonObj);
+            UserProfileClass userProfileClass = new UserProfileClass(
+                    jsonObj.getString("name"),
+                    UserProfileClass.Gender.getGender(jsonObj.getString("gender")),
+                    jsonObj.getInt("age"),
+                    jsonObj.getInt("follower"),
+                    jsonObj.getString("color")
+            );
+            Log.i("BTL", "nach: " + userProfileClass);
+            return userProfileClass;
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return null;
+        UserProfileClass userProfileClass = new UserProfileClass();
+        return userProfileClass;
     }
 
     public static void WBSProfileToJson(Context context, UserProfileClass upc) {

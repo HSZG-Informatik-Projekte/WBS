@@ -1,15 +1,12 @@
 package com.example.wbs;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.json.JSONObject;
 
 public class ShowProfileActivity extends AppCompatActivity {
     private UserProfileClass wbsProfile;
@@ -17,12 +14,13 @@ public class ShowProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_profile);
+
+        wbsProfile = JsonUtil.readProfileFromJson(this);
 
         //ActionBar actionBar = getActionBar();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
-        setContentView(R.layout.activity_show_profile);
 
         final TextView TxtName = findViewById(R.id.SPA_text_name2);
         TxtName.setText("" + wbsProfile.getName());
@@ -39,8 +37,7 @@ public class ShowProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
-                mySuperIntent.putExtra("wbsProfile", wbsProfile);
-                mySuperIntent.putExtra("editProfile", true);
+                wbsProfile.setAction("editProfile");
                 startActivity(mySuperIntent);
             }
         });
@@ -48,7 +45,6 @@ public class ShowProfileActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        myIntent.putExtra("wbsProfile", wbsProfile);
         startActivityForResult(myIntent, 0);
         finish();
         return true;

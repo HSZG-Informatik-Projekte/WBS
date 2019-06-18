@@ -1,13 +1,6 @@
 package com.example.wbs;
 
-import android.content.Context;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.Serializable;
-
-public class UserProfileClass implements Serializable  { // extends Activity
+public class UserProfileClass  {
 
     private String name;
     private Gender gender;
@@ -15,32 +8,19 @@ public class UserProfileClass implements Serializable  { // extends Activity
     private int follower;
     private String color;
     private boolean isProfile;
+    private String action;
 
-    UserProfileClass(String name,Gender gender,int age,int follower,String color) {
+    UserProfileClass() {
+        this.isProfile = false;
+    }
+
+    UserProfileClass(String name, Gender gender, int age, int follower, String color) {
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.follower = follower;
         this.color = color;
-    }
-
-    UserProfileClass(Context context) {
-        JSONObject tmp = JsonUtil.readProfileFromJson(context);
-
-        if ( tmp != null) {
-            try {
-                this.name = tmp.getString("name");
-                this.gender = Gender.getGender(tmp.getString("gender"));
-                this.age = tmp.getInt("age");
-                this.follower = tmp.getInt("follower");
-                this.color = tmp.getString("color");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            this.isProfile = true;
-        } else {
-            this.isProfile = false;
-        }
+        this.isProfile = true;
     }
 
     public String getName() {
@@ -89,6 +69,14 @@ public class UserProfileClass implements Serializable  { // extends Activity
 
     public void setisProfile(boolean profile) {
         isProfile = profile;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 
     public enum Gender {

@@ -1,16 +1,10 @@
 package com.example.wbs;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.provider.MediaStore;
-import android.renderscript.Allocation;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -51,10 +45,9 @@ public class FollowerChoiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        wbsProfile = (UserProfileClass) getIntent().getExtras().getSerializable("wbsProfile");
-        final boolean editProfile = (boolean) getIntent().getExtras().getSerializable("editProfile");
         setContentView(R.layout.activity_follower_choice);
+
+        wbsProfile = JsonUtil.readProfileFromJson(this);
 
         //NEXT BUTTON
         final Button ButtonNext = findViewById(R.id.FCA_button_next);
@@ -64,12 +57,12 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
                 Intent mySuperIntent;
-                if (editProfile) {
+                if (wbsProfile.getAction() == "editProfile") {
                     mySuperIntent = new Intent(FollowerChoiceActivity.this, ShowProfileActivity.class);
                 } else {
                     mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
                 }
-                mySuperIntent.putExtra("wbsProfile", wbsProfile);
+                wbsProfile.setAction("");
                 startActivity(mySuperIntent);
                 finish();
             }
@@ -82,14 +75,12 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
                 Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, CreateProfileActivity.class);
-                mySuperIntent.putExtra("wbsProfile", wbsProfile);
                 startActivity(mySuperIntent);
                 finish();
             }
         });
 
         imageButtonsList = new ArrayList<ImageButton>(FOLLOWER_IDS.length);
-
 
         for(int id : FOLLOWER_IDS) {
             final int i = id;
