@@ -1,6 +1,7 @@
 package com.example.wbs;
 
 import android.media.MediaPlayer;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,19 +11,36 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.VideoView;
 
+import java.util.ArrayList;
+
 public class VideoScreenActivity extends AppCompatActivity {
 
     VideoView videoView;
     Boolean playing = false,started=false;
     ImageButton playButton,continueButton;
     int videoNumber;
-    String VName="europe";
-
+    String VName="funny";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_screen);
+
+        videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
+
+        ArrayList videos = JsonUtil.readVideoFromJson(VideoScreenActivity.this);
+
+        for(int i=0; i<videos.size(); i++){
+            VideoClass video= (VideoClass) videos.get(i);
+            Log.i("testId",""+video.getId());
+            Log.i("testVNumber",""+videoNumber);
+            Log.i("testName",""+video.getName());
+            Log.i("testVName",""+VName);
+            if(video.getId()==videoNumber){
+                VName= video.getName();
+            }
+        }
+        Log.i("testVNameNeu",""+VName);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this,R.anim.anim_alpha);
 
@@ -30,10 +48,8 @@ public class VideoScreenActivity extends AppCompatActivity {
 
         videoView.setVideoPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier(VName,"raw",""+getPackageName()));
 
-        videoNumber = (int) getIntent().getExtras().getSerializable("videoNumber");
 
-
-
+        
         playButton =findViewById(R.id.playButtonID);
 
         continueButton = findViewById(R.id.continueButtonID);
