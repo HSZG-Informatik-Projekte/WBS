@@ -1,7 +1,7 @@
 {
   "questions": [
     {
-      "id": 1,
+      "id": 0,
       "question": "Wie verhälst du dich?",
       "answers": {
         "1": "Ich gehe dem Fremden aus dem Weg.",
@@ -10,7 +10,7 @@
       "right": "1"
     },
     {
-      "id": 2,
+      "id": 1,
       "question": "Wie verhälst du dich?",
       "answers": {
         "1": "A Hier geht das ab",
@@ -31,7 +31,7 @@
       "right": "3"
     },
     {
-      "id": 2,
+      "id": 3,
       "question": "Wie verhälst du dich?",
       "answers": {
         "1": "A Hier geht das ab",
