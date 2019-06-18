@@ -83,7 +83,7 @@ public class UserProfileClass  {
         MALE, FEMALE;
 
         public static Gender getGender(String s) {
-            return s == MALE.toString() ? MALE : FEMALE;
+            return s.equals(MALE.toString()) ? MALE : FEMALE;
         }
     };
 }

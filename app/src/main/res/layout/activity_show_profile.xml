@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/activities_background_color"
     tools:context=".ShowProfileActivity">
 
     <TextView
@@ -24,6 +25,7 @@
         app:layout_constraintVertical_bias="0.091" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -108,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/SPA_Color" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -126,5 +129,34 @@
         app:layout_constraintTop_toTopOf="@+id/SPA_text_head"
         app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/SPA_text_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="@string/SPA_Follower" />
+
+        <ImageView
+            android:id="@+id/SPA_image_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/icon_follower_1" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

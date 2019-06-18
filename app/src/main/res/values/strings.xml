@@ -23,12 +23,14 @@
     <string name="MA_Click">Klick mich!</string>
 
     <string name="SPA_Head">Profil</string>
+    <string name="SPA_Edit">Profil bearbeiten</string>
     <string name="SPA_Name">Name</string>
     <string name="SPA_Sex">Geschlecht</string>
     <string name="SPA_Age">Alter</string>
     <string name="SPA_Color">Lieblingsfarbe</string>
     <string name="SPA_Rewards">Belohnungen</string>
-    <string name="SPA_Edit">Profil bearbeiten</string>
+
+    <string name="SPA_Follower">Begleiter</string>
 
     <string name="ENWA_Header">Willkommen in Europa</string>
     <string name="ENWA_Europe">Europa Karte</string>

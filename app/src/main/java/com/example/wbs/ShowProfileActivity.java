@@ -3,6 +3,7 @@ package com.example.wbs;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,6 +23,16 @@ public class ShowProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final ImageView ImageEdit = findViewById(R.id.SPA_image_edit);
+        ImageEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
+                wbsProfile.setAction("editProfile");
+                startActivity(mySuperIntent);
+            }
+        });
+
         final TextView TxtName = findViewById(R.id.SPA_text_name2);
         TxtName.setText("" + wbsProfile.getName());
         final TextView TxtSex = findViewById(R.id.SPA_text_sex2);
@@ -31,16 +42,13 @@ public class ShowProfileActivity extends AppCompatActivity {
         final TextView TxtColor = findViewById(R.id.SPA_text_color2);
         TxtColor.setText("" + wbsProfile.getColor());
 
-        final ImageView ImageEdit = findViewById(R.id.SPA_image_edit);
+        final ImageView ImageFollower = findViewById(R.id.SPA_image_follower);
 
-        ImageEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
-                wbsProfile.setAction("editProfile");
-                startActivity(mySuperIntent);
-            }
-        });
+        String follow = "icon_follower_" + 1;
+        ImageFollower.setImageResource(getResources().getIdentifier(follow,"mipmap",""+getPackageName()));
+        //ImageFollower.setImageResource(wbsProfile.getFollower());
+        Log.i("blabla", "" + wbsProfile.getFollower());
+        Log.i("blabla", "" + getResources().getIdentifier(follow,"mipmap",""+getPackageName()));
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
