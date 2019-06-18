@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mySuperIntent = new Intent(MainActivity.this, VideoScreenActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
-                mySuperIntent.putExtra("videoNumber", 0);
+                mySuperIntent.putExtra("videoNumber", 1);
                 startActivity(mySuperIntent);
             }
         });
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mySuperIntent = new Intent(MainActivity.this, VideoScreenActivity.class);
                 mySuperIntent.putExtra("wbsProfile", wbsProfile);
-                mySuperIntent.putExtra("videoNumber", 1);
+                mySuperIntent.putExtra("videoNumber", 2);
                 startActivity(mySuperIntent);
             }
         });
