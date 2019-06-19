@@ -2,6 +2,7 @@ package com.example.wbs;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
 
+    private int choseCheckBox;
     private ArrayList<CheckBox> checkboxes = new ArrayList<>();
 
     @Override
@@ -41,11 +43,13 @@ public class QuestionActivity extends AppCompatActivity {
             params.gravity = Gravity.NO_GRAVITY;
             check.setLayoutParams(params);
             check.setGravity(Gravity.CENTER);
+            final int ii = i;
             check.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     setCheckGroup((CheckBox)v);
                     ButtonNext.setEnabled(true);
+                    choseCheckBox = ii;
                 }
 
             });
@@ -60,6 +64,13 @@ public class QuestionActivity extends AppCompatActivity {
         ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Prüfung ob Frage Richtig
+                AlertDialog.Builder myAlter = new AlertDialog.Builder(QuestionActivity.this);
+                myAlter.setMessage("Richtig oder Falsch ...");
+                myAlter.create();
+                myAlter.show();
+
                 Intent mySuperIntent;
                 mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
                 startActivity(mySuperIntent);
