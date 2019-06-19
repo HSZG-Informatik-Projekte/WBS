@@ -38,7 +38,7 @@ public class ShowProfileActivity extends AppCompatActivity {
         final TextView TxtName = findViewById(R.id.SPA_text_name2);
         TxtName.setText("" + wbsProfile.getName());
         final TextView TxtSex = findViewById(R.id.SPA_text_sex2);
-        TxtSex.setText("" + wbsProfile.getGender());
+        TxtSex.setText("" + wbsProfile.getGender().getBezeichner());
         final TextView TxtAge = findViewById(R.id.SPA_text_age2);
         TxtAge.setText("" + wbsProfile.getAge());
         final TextView TxtColor = findViewById(R.id.SPA_text_color2);

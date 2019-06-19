@@ -81,10 +81,20 @@ public class UserProfileClass  {
     }
 
     public enum Gender {
-        MALE, FEMALE;
+        MALE("Männlich"), FEMALE("Weiblich");
 
+        private String bezeichner;
+
+        Gender(String bezeichner) {
+            this.bezeichner = bezeichner;
+        }
+        
         public static Gender getGender(String s) {
             return s.equals(MALE.toString()) ? MALE : FEMALE;
+        }
+
+        public String getBezeichner() {
+            return bezeichner;
         }
     };
 }

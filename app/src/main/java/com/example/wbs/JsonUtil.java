@@ -137,7 +137,8 @@ public class JsonUtil {
                         jArrAll.getJSONObject(i).optString("name",""),
                         jArrAll.getJSONObject(i).optString("description",""),
                         jArrAll.getJSONObject(i).optString("filepath",""),
-                        jArrAll.getJSONObject(i).optInt("duration",0)
+                        jArrAll.getJSONObject(i).optInt("duration",0),
+                        jArrAll.getJSONObject(i).optInt("questionid",0)
                 );
                 videoClass.add(vc);
             }

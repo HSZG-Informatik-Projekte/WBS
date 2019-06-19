@@ -6,13 +6,15 @@ public class VideoClass {
     private String description;
     private String filepath;
     private int duration;
+    private int questionid;
 
-    VideoClass(int id, String name, String description,String filepath, int duration) {
+    VideoClass(int id, String name, String description, String filepath, int duration, int questionid) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.filepath = filepath;
         this.duration = duration;
+        this.questionid = questionid;
     }
 
     public int getId() {
@@ -53,5 +55,13 @@ public class VideoClass {
 
     public void setFilepath(String filepath) {
         this.filepath = filepath;
+    }
+
+    public int getQuestionid() {
+        return questionid;
+    }
+
+    public void setQuestionid(int questionid) {
+        this.questionid = questionid;
     }
 }
