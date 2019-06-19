@@ -61,6 +61,7 @@ public class VideoScreenActivity extends AppCompatActivity {
               public void onClick(View v) {
                   Intent mySuperIntent = new Intent(VideoScreenActivity.this, QuestionActivity.class);;
                   mySuperIntent.putExtra("VQId", VQId);
+                  mySuperIntent.putExtra("videoNumber", videoNumber);
                   startActivity(mySuperIntent);
                   finish();
               }

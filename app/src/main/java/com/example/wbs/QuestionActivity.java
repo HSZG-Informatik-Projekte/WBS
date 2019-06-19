@@ -52,6 +52,14 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed(){
+        Intent mySuperIntent = new Intent(QuestionActivity.this, VideoScreenActivity.class);
+        mySuperIntent.putExtra("videoNumber", (int) getIntent().getExtras().getSerializable("videoNumber"));
+        startActivity(mySuperIntent);
+        finish();
+    }
+
     private void setCheckGroup(CheckBox cks) {
         for (int i = 0; i < checkboxes.size(); i++) {
             checkboxes.get(i).setChecked(false);
