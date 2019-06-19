@@ -21,7 +21,7 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
 
         ArrayList<QuestionClass> questionClass = JsonUtil.readQuestionFromJson(this);
-        int questionNr = 0; //DEBUG
+        int questionNr = (int) getIntent().getExtras().getSerializable("VQId");
 
         final TextView TxtHeader = findViewById(R.id.QA_textView_header);
         TxtHeader.setText(questionClass.get(questionNr).getQuestion());
