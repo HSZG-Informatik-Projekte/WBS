@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,7 +12,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private UserProfileClass wbsProfile;
 
-    private static int SPLASH_TIME = 1000; //This is 2 seconds
+    private static int SPLASH_TIME = 2000; //This is 2 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
         /* DEBUG
         *  vor start Profil Datei löschen
         */
-        //JsonUtil.DeletProfile(this);
+        JsonUtil.DeletProfile(this);
 
 
         wbsProfile = JsonUtil.readProfileFromJson(this);
@@ -31,6 +32,8 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 JsonUtil.DeletProfile(SplashScreen.this);
+                Log.i("BLT [SS]", "DeletProfile");
+
             }
         });
 
