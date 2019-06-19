@@ -108,5 +108,14 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             imageButtonsList.add(ib);
             i++;
         }
+
+        for(int j=0; j<FOLLOWER_RESSOURCE_IDS.length; j++) {
+            if(wbsProfile.getFollower() == FOLLOWER_RESSOURCE_IDS[j]) {
+                final ImageButton preesButton = (ImageButton)findViewById(FOLLOWER_BUTTON_IDS[j]);
+                preesButton.callOnClick();
+                break;
+            }
+        }
+
     }
 }
