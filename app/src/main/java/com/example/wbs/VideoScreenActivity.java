@@ -40,7 +40,7 @@ public class VideoScreenActivity extends AppCompatActivity {
             Log.i("testVName",""+VName);
             if(video.getId() == videoNumber){
                 VName = video.getName();
-                VQId = video.getQustionId();
+                VQId = video.getQuestionId();
             }
         }
         Log.i("testVNameNeu",""+VName);
@@ -59,7 +59,7 @@ public class VideoScreenActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  Intent mySuperIntent = new Intent(VideoScreenActivity.this, ShowProfileActivity.class);;
+                  Intent mySuperIntent = new Intent(VideoScreenActivity.this, QuestionActivity.class);;
                   mySuperIntent.putExtra("VQId", VQId);
                   startActivity(mySuperIntent);
                   finish();

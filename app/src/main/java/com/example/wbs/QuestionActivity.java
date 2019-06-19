@@ -1,5 +1,6 @@
 package com.example.wbs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -42,6 +43,6 @@ public class QuestionActivity extends AppCompatActivity {
             LinearLayout lin = (LinearLayout) findViewById(R.id.QA_LinearLayOut_answerLayout);
             lin.addView(check);
         }
-
     }
+
 }
