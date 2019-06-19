@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,13 +24,21 @@ public class FollowerChoiceActivity extends AppCompatActivity {
     private UserProfileClass wbsProfile;
 
     ArrayList<ImageButton> imageButtonsList;
-    private static final int[] FOLLOWER_IDS = {
+    private static final int[] FOLLOWER_BUTTON_IDS = {
             R.id.FCA_ImageButton_follower_1,
             R.id.FCA_ImageButton_follower_2,
             R.id.FCA_ImageButton_follower_3,
             R.id.FCA_ImageButton_follower_4,
             R.id.FCA_ImageButton_follower_5,
             R.id.FCA_ImageButton_follower_6
+    };
+    private static final int[] FOLLOWER_RESSOURCE_IDS = {
+            R.mipmap.icon_follower_1,
+            R.mipmap.icon_follower_2,
+            R.mipmap.icon_follower_3,
+            R.mipmap.icon_follower_4,
+            R.mipmap.icon_follower_5,
+            R.mipmap.icon_follower_6
     };
 
     private void setAllFollowerNone() {
@@ -55,14 +64,14 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
                 Intent mySuperIntent;
-                if (wbsProfile.getAction() == "editProfile") {
+                if (wbsProfile.getAction().equals("editProfile")) {
                     mySuperIntent = new Intent(FollowerChoiceActivity.this, ShowProfileActivity.class);
                 } else {
                     mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
                 }
                 wbsProfile.setAction("");
+                JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
                 startActivity(mySuperIntent);
                 finish();
             }
@@ -80,11 +89,12 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             }
         });
 
-        imageButtonsList = new ArrayList<ImageButton>(FOLLOWER_IDS.length);
+        imageButtonsList = new ArrayList<ImageButton>(FOLLOWER_BUTTON_IDS.length);
 
-        for(int id : FOLLOWER_IDS) {
-            final int i = id;
+        int i = 0;
+        for(int id : FOLLOWER_BUTTON_IDS) {
             final ImageButton ib = (ImageButton)findViewById(id);
+            final int foll_id = FOLLOWER_RESSOURCE_IDS[i];
             ib.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -92,10 +102,11 @@ public class FollowerChoiceActivity extends AppCompatActivity {
                     setAllFollowerNone();
                     ib.setBackgroundColor(Color.parseColor(active_follower));
                     ButtonNext.setEnabled(true);
-                    wbsProfile.setFollower(i);
+                    wbsProfile.setFollower(foll_id);
                 }
             });
             imageButtonsList.add(ib);
+            i++;
         }
     }
 }

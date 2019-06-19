@@ -1,6 +1,7 @@
 package com.example.wbs;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class ShowProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
                 wbsProfile.setAction("editProfile");
+                JsonUtil.WBSProfileToJson(ShowProfileActivity.this, wbsProfile);
                 startActivity(mySuperIntent);
             }
         });
@@ -41,14 +43,12 @@ public class ShowProfileActivity extends AppCompatActivity {
         TxtAge.setText("" + wbsProfile.getAge());
         final TextView TxtColor = findViewById(R.id.SPA_text_color2);
         TxtColor.setText("" + wbsProfile.getColor());
+        TxtColor.setTextColor(Color.parseColor(wbsProfile.getColor()));
+        TxtColor.setBackgroundColor(Color.parseColor(wbsProfile.getColor()));
 
         final ImageView ImageFollower = findViewById(R.id.SPA_image_follower);
 
-        String follow = "icon_follower_" + 1;
-        ImageFollower.setImageResource(getResources().getIdentifier(follow,"mipmap",""+getPackageName()));
-        //ImageFollower.setImageResource(wbsProfile.getFollower());
-        Log.i("blabla", "" + wbsProfile.getFollower());
-        Log.i("blabla", "" + getResources().getIdentifier(follow,"mipmap",""+getPackageName()));
+        ImageFollower.setImageResource(wbsProfile.getFollower());
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
