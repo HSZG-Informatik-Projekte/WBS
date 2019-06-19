@@ -2,10 +2,12 @@ package com.example.wbs;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,12 +16,16 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
 
+    private int choseCheckBox;
     private ArrayList<CheckBox> checkboxes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        final Button ButtonNext = findViewById(R.id.QA_button_next);
+        final Button ButtonBack = findViewById(R.id.QA_button_back);
 
         ArrayList<QuestionClass> questionClass = JsonUtil.readQuestionFromJson(this);
         int questionNr = (int) getIntent().getExtras().getSerializable("VQId");
@@ -37,10 +43,13 @@ public class QuestionActivity extends AppCompatActivity {
             params.gravity = Gravity.NO_GRAVITY;
             check.setLayoutParams(params);
             check.setGravity(Gravity.CENTER);
+            final int ii = i;
             check.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     setCheckGroup((CheckBox)v);
+                    ButtonNext.setEnabled(true);
+                    choseCheckBox = ii;
                 }
 
             });
@@ -50,6 +59,32 @@ public class QuestionActivity extends AppCompatActivity {
             lin.addView(check);
         }
 
+        //NEXT BUTTON
+        ButtonNext.setEnabled(false);
+        ButtonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Prüfung ob Frage Richtig
+                AlertDialog.Builder myAlter = new AlertDialog.Builder(QuestionActivity.this);
+                myAlter.setMessage("Richtig oder Falsch ...");
+                myAlter.create();
+                myAlter.show();
+
+                Intent mySuperIntent;
+                mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
+                startActivity(mySuperIntent);
+                finish();
+            }
+        });
+
+        //BACK BUTTON
+        ButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -58,6 +93,7 @@ public class QuestionActivity extends AppCompatActivity {
         mySuperIntent.putExtra("videoNumber", (int) getIntent().getExtras().getSerializable("videoNumber"));
         startActivity(mySuperIntent);
         finish();
+
     }
 
     private void setCheckGroup(CheckBox cks) {
