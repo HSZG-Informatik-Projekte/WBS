@@ -40,7 +40,7 @@ public class VideoScreenActivity extends AppCompatActivity {
             Log.i("testVName",""+VName);
             if(video.getId() == videoNumber){
                 VName = video.getName();
-                VQId = video.getQustionId();
+                VQId = video.getQuestionid();
             }
         }
         Log.i("testVNameNeu",""+VName);
