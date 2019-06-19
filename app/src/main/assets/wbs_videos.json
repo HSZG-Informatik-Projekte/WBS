@@ -5,21 +5,24 @@
       "name": "europe",
       "description": "Hier geht das ab...",
       "filepath": "res/raw/europe.mp4",
-      "duration": 107410
+      "duration": 107410,
+      "questionid": 1
     },
     {
       "videofileid": 1,
       "name": "funny",
       "description": "funny",
       "filepath": "res/raw/funny.mp4",
-      "duration": 76434
+      "duration": 76434,
+      "questionid": 2
     },
     {
       "videofileid": 2,
       "name": "paris",
       "description": "paris",
       "filepath": "res/raw/paris.mp4",
-      "duration": 23423
+      "duration": 23423,
+      "questionid": 3
     }
   ]
 }
