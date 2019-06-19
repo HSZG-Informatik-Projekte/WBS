@@ -46,7 +46,7 @@
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/FullScreen.NoActionBar" />
+            android:theme="@style/FullScreenWithActionBar" />
     </application>
 
 </manifest>
