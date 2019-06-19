@@ -3,17 +3,17 @@ package com.example.wbs;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    private List<CheckBox> checkboxes = new ArrayList<>();
+    private ArrayList<CheckBox> checkboxes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
 
         ArrayList<QuestionClass> questionClass = JsonUtil.readQuestionFromJson(this);
-        int questionNr = 0; //DEBUG
+        int questionNr = 2; //DEBUG
 
         final TextView TxtHeader = findViewById(R.id.QA_textView_header);
         TxtHeader.setText(questionClass.get(questionNr).getQuestion());
@@ -36,12 +36,24 @@ public class QuestionActivity extends AppCompatActivity {
             params.gravity = Gravity.NO_GRAVITY;
             check.setLayoutParams(params);
             check.setGravity(Gravity.CENTER);
+            check.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    setCheckGroup((CheckBox)v);
+                }
 
+            });
             checkboxes.add(check);
 
             LinearLayout lin = (LinearLayout) findViewById(R.id.QA_LinearLayOut_answerLayout);
             lin.addView(check);
         }
+    }
 
+    private void setCheckGroup(CheckBox cks) {
+        for (int i = 0; i < checkboxes.size(); i++) {
+            checkboxes.get(i).setChecked(false);
+        }
+        cks.setChecked(true);
     }
 }
