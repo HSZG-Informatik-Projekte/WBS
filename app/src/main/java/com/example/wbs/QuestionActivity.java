@@ -1,5 +1,6 @@
 package com.example.wbs;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -27,9 +28,8 @@ public class QuestionActivity extends AppCompatActivity {
         final Button ButtonNext = findViewById(R.id.QA_button_next);
         final Button ButtonBack = findViewById(R.id.QA_button_back);
 
-        ArrayList<QuestionClass> questionClass = JsonUtil.readQuestionFromJson(this);
-        int questionNr = (int) getIntent().getExtras().getSerializable("VQId");
-
+        final ArrayList<QuestionClass> questionClass = JsonUtil.readQuestionFromJson(this);
+        final int questionNr = (int) getIntent().getExtras().getSerializable("VQId");
         final TextView TxtHeader = findViewById(R.id.QA_textView_header);
         TxtHeader.setText(questionClass.get(questionNr).getQuestion());
 
@@ -64,17 +64,41 @@ public class QuestionActivity extends AppCompatActivity {
         ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(QuestionActivity.this);
+                alert.setTitle("WBS");
 
-                //Prüfung ob Frage Richtig
-                AlertDialog.Builder myAlter = new AlertDialog.Builder(QuestionActivity.this);
-                myAlter.setMessage("Richtig oder Falsch ...");
-                myAlter.create();
-                myAlter.show();
-
-                Intent mySuperIntent;
-                mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
-                startActivity(mySuperIntent);
-                finish();
+                //Richtige Antwort
+                if(choseCheckBox == questionClass.get(questionNr).getRight()) {
+                    alert.setMessage("Glückwunsch :) das war richtig!");
+                    alert.setPositiveButton("weiter ...", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent mySuperIntent;
+                            mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
+                            startActivity(mySuperIntent);
+                            finish();
+                        }
+                    });
+                } else { //Falsche Antwort
+                    alert.setMessage("Leider Falsch :( Versuche es nocheinmal!");
+                    alert.setNegativeButton("Neuer Versuch", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    alert.setPositiveButton("Später noch einmal", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent mySuperIntent;
+                            mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
+                            startActivity(mySuperIntent);
+                            finish();
+                        }
+                    });
+                }
+                alert.create();
+                alert.show();
             }
         });
 

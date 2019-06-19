@@ -3,12 +3,10 @@ package com.example.wbs;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -51,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageView image = findViewById(R.id.MA_imageview_1);
+        //image.setImageResource(android.R.drawable.star_big_on);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

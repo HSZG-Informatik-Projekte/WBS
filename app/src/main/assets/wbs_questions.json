@@ -2,42 +2,42 @@
   "questions": [
     {
       "id": 0,
-      "question": "Wie verhälst du dich?",
+      "question": "0 Wie verhälst du dich?",
       "answers": {
-        "1": "Ich gehe dem Fremden aus dem Weg.",
-        "2": "Ich liebe Schokolade und nehme sie gern an."
+        "0": "Ich gehe dem Fremden aus dem Weg.",
+        "1": "Ich liebe Schokolade und nehme sie gern an."
       },
       "right": "1"
     },
     {
       "id": 1,
-      "question": "Wie verhälst du dich?",
+      "question": "1 Wie verhälst du dich?",
       "answers": {
-        "1": "A Hier geht das ab",
-        "2": "B Hier geht das ab.",
-        "3": "C geht das ab"
+        "0": "A Hier geht das ab",
+        "1": "B Hier geht das ab.",
+        "2": "C geht das ab"
       },
-      "right": "3"
+      "right": "2"
     },
     {
       "id": 2,
-      "question": "Wie verhälst du dich?",
+      "question": "2 Wie verhälst du dich?",
       "answers": {
-        "1": "A Hier geht das ab",
-        "2": "B Hier geht das ab",
-        "3": "C Hier geht das ab",
-        "4": "D Hier geht das ab"
+        "0": "A Hier geht das ab",
+        "1": "B Hier geht das ab",
+        "2": "C Hier geht das ab",
+        "3": "D Hier geht das ab"
       },
       "right": "3"
     },
     {
       "id": 3,
-      "question": "Wie verhälst du dich?",
+      "question": "3 Wie verhälst du dich?",
       "answers": {
-        "1": "A Hier geht das ab",
-        "2": "B Hier geht das ab"
+        "0": "A Hier geht das ab",
+        "1": "B Hier geht das ab"
       },
-      "right": "2"
+      "right": "1"
     }
   ]
 }

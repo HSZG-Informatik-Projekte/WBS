@@ -1,7 +1,6 @@
 package com.example.wbs;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +36,6 @@ public class JsonUtil {
                 brString.append(mLine);
             }
         } catch (IOException e) {
-            Log.i("BLT [JU]", "readProfileFromJson: Datei nicht da");
             e.printStackTrace();
         } finally {
             if (reader != null) {
@@ -51,7 +49,6 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
-            Log.i("BLT [JU]", "UserProfile: " + jsonObj.toString());
 
             UserProfileClass userProfileClass = new UserProfileClass(
                     jsonObj.optString("name", ""),
@@ -63,7 +60,6 @@ public class JsonUtil {
             );
             return userProfileClass;
         } catch (JSONException e) {
-            Log.i("BLT [JU]", "UserProfile: Kein Profil! return: new UPC");
             //e.printStackTrace();
         }
         UserProfileClass userProfileClass = new UserProfileClass();
@@ -74,7 +70,6 @@ public class JsonUtil {
         JSONObject jsonObj = new JSONObject();
 
         try {
-            // Here we convert Java Object to JSON
             jsonObj.put("name", upc.getName());
             jsonObj.put("gender", upc.getGender());
             jsonObj.put("age", upc.getAge());
@@ -85,12 +80,7 @@ public class JsonUtil {
             //e.printStackTrace();
         }
 
-        Log.i("BLT [JU]", "WRITE: jsonObj: " + jsonObj);
-
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
-
-        Log.i("BLT [JU]", "WRITE: getFilesDir: " + file.getAbsolutePath());
-
         FileOutputStream outputStream = null;
         try {
             file.createNewFile();
@@ -174,26 +164,23 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
-
             JSONArray jQuestion = jsonObj.getJSONArray("questions");
-
             ArrayList<QuestionClass> questionClass = new ArrayList<QuestionClass>(jQuestion.length());
 
             for(int i = 0; i < jQuestion.length(); i++) {
                 JSONObject jAnwers = new JSONObject(jQuestion.getJSONObject(i).getString("answers"));
                 ArrayList<String> anwers = new ArrayList<>(jAnwers.length());
-                for (int j = 1; j <= jAnwers.length(); j++) {
+                for (int j = 0; j < jAnwers.length(); j++) {
                     anwers.add(jAnwers.getString(""+j));
                 }
                 QuestionClass qc = new QuestionClass(
-                        jQuestion.getJSONObject(i).optInt("id",0),
+                        jQuestion.getJSONObject(i).optInt("id",i),
                         jQuestion.getJSONObject(i).optString("question",""),
-                        jQuestion.getJSONObject(i).optString("right",""),
+                        jQuestion.getJSONObject(i).optInt("right",0),
                         anwers
                 );
                 questionClass.add(qc);
             }
-
             return questionClass;
         } catch (Exception e) {
             e.printStackTrace();
