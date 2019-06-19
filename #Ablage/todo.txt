@@ -1,2 +1,11 @@
-nicht immer neue Aktivität sondern die alte wieder aufrufen
-Persistenz
+Shop
+Belohnungen im Profil
+Hacken beim erfüllen
+Video Buttons
+Profilausfüllung
+Farbenumrandungen Hacken bei Lieblingsauswahl
+Alert
+
+Deletebutton wegmachen
+
+Vortrag
