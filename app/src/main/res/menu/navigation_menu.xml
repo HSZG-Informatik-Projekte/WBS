@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/menu_profile"
+            android:enabled="true"
+            android:icon="@drawable/ic_menu_person"
+            android:title="@string/menu_profile" />
+    </group>
+    <item android:title="Shop">
+        <menu>
+            <item
+                android:id="@+id/follower_shop"
+                android:enabled="true"
+                android:icon="@drawable/ic_menu_shop"
+                android:title="@string/menu_shop" />
+        </menu>
+    </item>
+</menu>
