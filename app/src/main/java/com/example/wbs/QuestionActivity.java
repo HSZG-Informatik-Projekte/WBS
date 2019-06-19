@@ -1,10 +1,12 @@
 package com.example.wbs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +21,9 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        final Button ButtonNext = findViewById(R.id.QA_button_next);
+        final Button ButtonBack = findViewById(R.id.QA_button_back);
 
         ArrayList<QuestionClass> questionClass = JsonUtil.readQuestionFromJson(this);
         int questionNr = (int) getIntent().getExtras().getSerializable("VQId");
@@ -40,6 +45,7 @@ public class QuestionActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     setCheckGroup((CheckBox)v);
+                    ButtonNext.setEnabled(true);
                 }
 
             });
@@ -48,6 +54,26 @@ public class QuestionActivity extends AppCompatActivity {
             LinearLayout lin = (LinearLayout) findViewById(R.id.QA_LinearLayOut_answerLayout);
             lin.addView(check);
         }
+
+        //NEXT BUTTON
+        ButtonNext.setEnabled(false);
+        ButtonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mySuperIntent;
+                mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
+                startActivity(mySuperIntent);
+                finish();
+            }
+        });
+
+        //BACK BUTTON
+        ButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void setCheckGroup(CheckBox cks) {
@@ -56,4 +82,6 @@ public class QuestionActivity extends AppCompatActivity {
         }
         cks.setChecked(true);
     }
+
+
 }
