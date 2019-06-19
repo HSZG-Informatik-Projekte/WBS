@@ -57,7 +57,7 @@ public class VideoClass {
         this.filepath = filepath;
     }
 
-    public int getQuestionid() {
+    public int getQuestionId() {
         return questionid;
     }
 
