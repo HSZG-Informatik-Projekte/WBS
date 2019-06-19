@@ -26,9 +26,9 @@ public class JsonUtil {
     }
 
     public static UserProfileClass readProfileFromJson(Context context) {
-        Log.i("BTL", "start: " );
         StringBuilder brString = new StringBuilder();
-        File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
+        File file;
+        file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -37,6 +37,7 @@ public class JsonUtil {
                 brString.append(mLine);
             }
         } catch (IOException e) {
+            Log.i("BLT [JU]", "readProfileFromJson: Datei nicht da");
             e.printStackTrace();
         } finally {
             if (reader != null) {
@@ -50,18 +51,20 @@ public class JsonUtil {
 
         try {
             JSONObject jsonObj = new JSONObject(brString.toString());
-            Log.i("BTL", "vor: " + jsonObj);
+            Log.i("BLT [JU]", "UserProfile: " + jsonObj.toString());
+
             UserProfileClass userProfileClass = new UserProfileClass(
-                    jsonObj.getString("name"),
-                    UserProfileClass.Gender.getGender(jsonObj.getString("gender")),
-                    jsonObj.getInt("age"),
-                    jsonObj.getInt("follower"),
-                    jsonObj.getString("color")
+                    jsonObj.optString("name", ""),
+                    UserProfileClass.Gender.getGender(jsonObj.optString("gender")),
+                    jsonObj.optInt("age",0),
+                    jsonObj.optInt("follower", 0),
+                    jsonObj.optString("color", ""),
+                    jsonObj.optString("action", "")
             );
-            Log.i("BTL", "nach: " + userProfileClass);
             return userProfileClass;
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.i("BLT [JU]", "UserProfile: Kein Profil! return: new UPC");
+            //e.printStackTrace();
         }
         UserProfileClass userProfileClass = new UserProfileClass();
         return userProfileClass;
@@ -77,15 +80,16 @@ public class JsonUtil {
             jsonObj.put("age", upc.getAge());
             jsonObj.put("follower", upc.getFollower());
             jsonObj.put("color", upc.getColor());
-        } catch (JSONException ex) {
-            ex.printStackTrace();
+            jsonObj.put("action", upc.getAction());
+        } catch (JSONException e) {
+            //e.printStackTrace();
         }
 
-        Log.i("BLT JUTIL", "WRITE: jsonObj: " + jsonObj);
+        Log.i("BLT [JU]", "WRITE: jsonObj: " + jsonObj);
 
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
 
-        Log.i("BLT JUTIL", "WRITE: getFilesDir: " + file.getAbsolutePath());
+        Log.i("BLT [JU]", "WRITE: getFilesDir: " + file.getAbsolutePath());
 
         FileOutputStream outputStream = null;
         try {
@@ -129,11 +133,11 @@ public class JsonUtil {
 
             for(int i = 0; i < jArrAll.length(); i++) {
                 VideoClass vc = new VideoClass(
-                        jArrAll.getJSONObject(i).getInt("videofileid"),
-                        jArrAll.getJSONObject(i).getString("name"),
-                        jArrAll.getJSONObject(i).getString("description"),
-                        jArrAll.getJSONObject(i).getString("filepath"),
-                        jArrAll.getJSONObject(i).getInt("duration")
+                        jArrAll.getJSONObject(i).optInt("videofileid",0),
+                        jArrAll.getJSONObject(i).optString("name",""),
+                        jArrAll.getJSONObject(i).optString("description",""),
+                        jArrAll.getJSONObject(i).optString("filepath",""),
+                        jArrAll.getJSONObject(i).optInt("duration",0)
                 );
                 videoClass.add(vc);
             }
@@ -181,9 +185,9 @@ public class JsonUtil {
                     anwers.add(jAnwers.getString(""+j));
                 }
                 QuestionClass qc = new QuestionClass(
-                        jQuestion.getJSONObject(i).getInt("id"),
-                        jQuestion.getJSONObject(i).getString("question"),
-                        jQuestion.getJSONObject(i).getString("right"),
+                        jQuestion.getJSONObject(i).optInt("id",0),
+                        jQuestion.getJSONObject(i).optString("question",""),
+                        jQuestion.getJSONObject(i).optString("right",""),
                         anwers
                 );
                 questionClass.add(qc);

@@ -30,6 +30,7 @@ public class ShowProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
                 wbsProfile.setAction("editProfile");
+                JsonUtil.WBSProfileToJson(ShowProfileActivity.this, wbsProfile);
                 startActivity(mySuperIntent);
             }
         });
@@ -47,11 +48,7 @@ public class ShowProfileActivity extends AppCompatActivity {
 
         final ImageView ImageFollower = findViewById(R.id.SPA_image_follower);
 
-        String follow = "icon_follower_" + 1;
-        ImageFollower.setImageResource(getResources().getIdentifier(follow,"mipmap",""+getPackageName()));
-        //ImageFollower.setImageResource(wbsProfile.getFollower());
-        Log.i("blabla", "" + wbsProfile.getFollower());
-        Log.i("blabla", "" + getResources().getIdentifier(follow,"mipmap",""+getPackageName()));
+        ImageFollower.setImageResource(wbsProfile.getFollower());
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
