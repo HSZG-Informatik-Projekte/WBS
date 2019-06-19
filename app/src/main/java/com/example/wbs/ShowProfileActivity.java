@@ -1,6 +1,7 @@
 package com.example.wbs;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -42,6 +43,8 @@ public class ShowProfileActivity extends AppCompatActivity {
         TxtAge.setText("" + wbsProfile.getAge());
         final TextView TxtColor = findViewById(R.id.SPA_text_color2);
         TxtColor.setText("" + wbsProfile.getColor());
+        TxtColor.setTextColor(Color.parseColor(wbsProfile.getColor()));
+        TxtColor.setBackgroundColor(Color.parseColor(wbsProfile.getColor()));
 
         final ImageView ImageFollower = findViewById(R.id.SPA_image_follower);
 
