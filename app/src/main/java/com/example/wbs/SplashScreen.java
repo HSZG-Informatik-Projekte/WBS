@@ -12,7 +12,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private UserProfileClass wbsProfile;
 
-    private static int SPLASH_TIME = 2000; //This is 2 seconds
+    private static int SPLASH_TIME = 1000; //This is 2 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
         /* DEBUG
         *  vor start Profil Datei löschen
         */
-        JsonUtil.DeletProfile(this);
+        //JsonUtil.DeletProfile(this);
 
 
         wbsProfile = JsonUtil.readProfileFromJson(this);
@@ -33,14 +33,12 @@ public class SplashScreen extends AppCompatActivity {
             public void onClick(View v) {
                 JsonUtil.DeletProfile(SplashScreen.this);
                 Log.i("BLT [SS]", "DeletProfile");
-
             }
         });
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Do any action here. Now we are moving to next page
                 Intent mySuperIntent;
 
                 if(wbsProfile.getisProfile()) {

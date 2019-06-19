@@ -65,9 +65,6 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent mySuperIntent;
-                Log.i("BTL [FCA]", "start ButtonNext");
-                Log.i("BTL [FCA]", "getAction: " + wbsProfile.getAction());
-
                 if (wbsProfile.getAction().equals("editProfile")) {
                     mySuperIntent = new Intent(FollowerChoiceActivity.this, ShowProfileActivity.class);
                 } else {
