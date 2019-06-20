@@ -1,5 +1,6 @@
 package com.example.wbs;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class VideoScreenActivity extends AppCompatActivity {
     ImageButton playButton,continueButton,pauseButton,repeatButton;
     int videoNumber;
     String VName="funny";
+    int VQId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,16 @@ public class VideoScreenActivity extends AppCompatActivity {
         ArrayList videos = JsonUtil.readVideoFromJson(VideoScreenActivity.this);
 
         for(int i=0; i<videos.size(); i++){
-            VideoClass video= (VideoClass) videos.get(i);
-            if(video.getId()==videoNumber){
-                VName= video.getName();
+
+            VideoClass video = (VideoClass) videos.get(i);
+            Log.i("testId",""+video.getId());
+            Log.i("testVNumber",""+videoNumber);
+            Log.i("testName",""+video.getName());
+            Log.i("testVName",""+VName);
+            if(video.getId() == videoNumber){
+                VName = video.getName();
+                VQId = video.getQuestionId();
+                break;
             }
         }
 
@@ -46,9 +55,19 @@ public class VideoScreenActivity extends AppCompatActivity {
 
 
         
-        playButton =findViewById(R.id.playButtonID);
+        playButton = findViewById(R.id.playButtonID);
 
         continueButton = findViewById(R.id.continueButtonID);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent mySuperIntent = new Intent(VideoScreenActivity.this, QuestionActivity.class);;
+                  mySuperIntent.putExtra("VQId", VQId);
+                  mySuperIntent.putExtra("videoNumber", videoNumber);
+                  startActivity(mySuperIntent);
+                  finish();
+              }
+        });
 
         pauseButton = findViewById(R.id.pauseButtonID);
 

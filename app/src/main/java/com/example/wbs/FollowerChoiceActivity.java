@@ -67,10 +67,11 @@ public class FollowerChoiceActivity extends AppCompatActivity {
                 Intent mySuperIntent;
                 if (wbsProfile.getAction().equals("editProfile")) {
                     mySuperIntent = new Intent(FollowerChoiceActivity.this, ShowProfileActivity.class);
+                    wbsProfile.setAction("editProfileOK");
                 } else {
                     mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
+                    wbsProfile.setAction("");
                 }
-                wbsProfile.setAction("");
                 JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
                 startActivity(mySuperIntent);
                 finish();
@@ -108,5 +109,14 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             imageButtonsList.add(ib);
             i++;
         }
+
+        for(int j=0; j<FOLLOWER_RESSOURCE_IDS.length; j++) {
+            if(wbsProfile.getFollower() == FOLLOWER_RESSOURCE_IDS[j]) {
+                final ImageButton preesButton = (ImageButton)findViewById(FOLLOWER_BUTTON_IDS[j]);
+                preesButton.callOnClick();
+                break;
+            }
+        }
+
     }
 }
