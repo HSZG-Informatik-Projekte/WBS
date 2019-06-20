@@ -1,7 +1,6 @@
-Shop
+Shop --> Hinweisballon: "Noch nciht verfügbar"???
 Belohnungen im Profil
 Hacken beim erfüllen
-Video Buttons
 Profilausfüllung
 Farbenumrandungen Hacken bei Lieblingsauswahl
 Alert
