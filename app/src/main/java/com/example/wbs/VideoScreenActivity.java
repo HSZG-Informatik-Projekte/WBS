@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.VideoView;
 
@@ -18,7 +19,8 @@ public class VideoScreenActivity extends AppCompatActivity {
 
     VideoView videoView;
     Boolean playing = false,started=false;
-    ImageButton playButton,continueButton,pauseButton,repeatButton;
+    ImageButton playButton,pauseButton,repeatButton;
+    Button continueButton,backButton;
     int videoNumber;
     String VName="funny";
     int VQId = -1;
@@ -53,11 +55,16 @@ public class VideoScreenActivity extends AppCompatActivity {
 
         videoView.setVideoPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier(VName,"raw",""+getPackageName()));
 
-
+        continueButton = findViewById(R.id.continueButtonID);
         
         playButton = findViewById(R.id.playButtonID);
 
-        continueButton = findViewById(R.id.continueButtonID);
+        backButton = findViewById(R.id.backButtonID);
+
+        pauseButton = findViewById(R.id.pauseButtonID);
+
+        repeatButton = findViewById(R.id.repeatButtonID);
+
         continueButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
@@ -69,10 +76,6 @@ public class VideoScreenActivity extends AppCompatActivity {
               }
         });
 
-        pauseButton = findViewById(R.id.pauseButtonID);
-
-        repeatButton = findViewById(R.id.repeatButtonID);
-
         Log.i("test","Vor allem  "+pauseButton.getVisibility());
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -80,7 +83,27 @@ public class VideoScreenActivity extends AppCompatActivity {
                 playing=false;
                 repeatButton.setVisibility(View.VISIBLE);
                 continueButton.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.VISIBLE);
                 started=false;
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+        repeatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repeatButton.setVisibility(View.GONE);
+
+                playing = true;
+                started = true;
+                videoView.start();
             }
         });
 
@@ -167,6 +190,13 @@ public class VideoScreenActivity extends AppCompatActivity {
                 }
             }
         } );
+
+    }
+    @Override
+    public void onBackPressed(){
+        Intent mySuperIntent = new Intent(VideoScreenActivity.this, MainActivity.class);
+        startActivity(mySuperIntent);
+        finish();
     }
 }
 

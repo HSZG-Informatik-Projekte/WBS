@@ -47,20 +47,6 @@
         app:srcCompat="@drawable/repeat" />
 
     <ImageButton
-        android:id="@+id/continueButtonID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/videoViewID"
-        app:layout_constraintEnd_toEndOf="@+id/videoViewID"
-        app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintStart_toStartOf="@+id/videoViewID"
-        app:layout_constraintTop_toTopOf="@+id/videoViewID"
-        app:layout_constraintVertical_bias="0.974"
-        app:srcCompat="@drawable/pause" />
-
-    <ImageButton
         android:id="@+id/pauseButtonID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,5 +62,39 @@
         app:layout_constraintTop_toTopOf="@+id/videoViewID"
         app:layout_constraintVertical_bias="0.505"
         app:srcCompat="@drawable/pause" />
+
+    <Button
+        android:id="@+id/backButtonID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/MENU_CONTROL_BACK"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/continueButtonID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/MENU_CONTROL_NEXT"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
