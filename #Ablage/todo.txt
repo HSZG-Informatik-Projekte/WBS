@@ -5,6 +5,7 @@ Video Buttons
 Profilausfüllung
 Farbenumrandungen Hacken bei Lieblingsauswahl
 Alert
+Variable Main Activity 
 
 Deletebutton wegmachen
 
