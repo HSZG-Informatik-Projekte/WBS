@@ -1,0 +1,40 @@
+{
+  "worlds": [
+    {
+      "worldid": 0,
+      "name": "europe",
+      "waypoint": {
+        "0" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 0
+        },
+        "1" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 1
+        },
+        "2" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 2
+        }
+      }
+    },
+    {
+      "worldid": 1,
+      "name": "amerika",
+      "waypoint": {
+        "0" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 3
+        },
+        "1" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 4
+        },
+        "2" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 5
+        }
+      }
+    }
+  ]
+}
