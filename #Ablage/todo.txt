@@ -1,8 +1,9 @@
 Shop --> Hinweisballon: "Noch nicht verfügbar"???
-Belohnungen im Profil
-Profilausfüllung
-Variable Main Activity 
+Belohnungen im Profil in Bearbeitung
+Variable Main Activity
+Profil wird erstellt bei Schließen der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgewählt ist
+getApplicationContext() überall?
 
-Deletebutton wegmachen
+Deletebutton wegmachen bzw ins Profil menu
 
 Vortrag

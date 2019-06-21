@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -152,6 +153,14 @@ public class CreateProfileActivity extends AppCompatActivity {
                 buttonSelected(ButtonColor_Green, "#00FF00");
             }
         });
+    }
+
+    public void onBackPressed(){
+        if (wbsProfile.getisProfile()) {
+            Intent mySuperIntent = new Intent(getApplicationContext(), ShowProfileActivity.class);
+            startActivity(mySuperIntent);
+        }
+        finish();
     }
 
     private void setGenderUsed(String gender) {

@@ -192,7 +192,7 @@ public class VideoScreenActivity extends AppCompatActivity {
         } );
 
     }
-    @Override
+
     public void onBackPressed(){
         Intent mySuperIntent = new Intent(VideoScreenActivity.this, MainActivity.class);
         startActivity(mySuperIntent);

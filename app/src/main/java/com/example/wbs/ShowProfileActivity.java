@@ -40,6 +40,7 @@ public class ShowProfileActivity extends AppCompatActivity {
                 wbsProfile.setAction("editProfile");
                 JsonUtil.WBSProfileToJson(ShowProfileActivity.this, wbsProfile);
                 startActivity(mySuperIntent);
+                finish();
             }
         });
 
@@ -57,13 +58,6 @@ public class ShowProfileActivity extends AppCompatActivity {
         final ImageView ImageFollower = findViewById(R.id.SPA_image_follower);
 
         ImageFollower.setImageResource(wbsProfile.getFollower());
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(myIntent, 0);
-        finish();
-        return true;
     }
 
 }
