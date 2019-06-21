@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageView image = findViewById(R.id.MA_imageview_1);
-        image.setImageResource(android.R.drawable.star_big_on);
+        //image.setImageResource(android.R.drawable.star_big_on);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
