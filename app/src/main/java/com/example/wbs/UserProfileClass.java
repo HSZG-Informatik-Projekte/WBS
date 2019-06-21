@@ -9,6 +9,7 @@ public class UserProfileClass  {
     private String color;
     private boolean isProfile;
     private String action;
+    private int stars;
 
     UserProfileClass() {
         this.isProfile = false;
@@ -79,6 +80,10 @@ public class UserProfileClass  {
     public void setAction(String action) {
         this.action = action;
     }
+
+    public void setStars(int stars) { this.stars = stars; }
+
+    public int getStars() { return stars; }
 
     public enum Gender {
         MALE("Männlich"), FEMALE("Weiblich");
