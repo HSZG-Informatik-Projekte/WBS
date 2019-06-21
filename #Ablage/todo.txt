@@ -1,9 +1,6 @@
-Shop --> Hinweisballon: "Noch nciht verfügbar"???
+Shop --> Hinweisballon: "Noch nicht verfügbar"???
 Belohnungen im Profil
-Hacken beim erfüllen
 Profilausfüllung
-Farbenumrandungen Hacken bei Lieblingsauswahl
-Alert
 Variable Main Activity 
 
 Deletebutton wegmachen
