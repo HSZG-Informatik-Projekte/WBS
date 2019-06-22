@@ -2,18 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/menu_profile"
+            android:id="@+id/NAV_Item_profile"
             android:enabled="true"
             android:icon="@drawable/ic_menu_person"
-            android:title="@string/menu_profile" />
+            android:title="@string/NAV_menu_profile" />
     </group>
-    <item android:title="Shop">
+    <item android:title="@string/NAV_title_menu_shop">
         <menu>
             <item
-                android:id="@+id/follower_shop"
+                android:id="@+id/NAV_Item_follower_shop"
                 android:enabled="true"
                 android:icon="@drawable/ic_menu_shop"
-                android:title="@string/menu_shop" />
+                android:title="@string/NAV_menu_shop_shop" />
+        </menu>
+    </item>
+    <item android:title="@string/NAV_title_menu_extras">
+        <menu>
+            <item
+                android:id="@+id/NAV_Item_to_do_liste"
+                android:enabled="true"
+                android:icon="@drawable/ic_menu_list"
+                android:title="@string/NAV_menu_extras_todolist" />
+            <item
+                android:id="@+id/NAV_Item_settings"
+                android:enabled="true"
+                android:icon="@drawable/ic_menu_settings"
+                android:title="@string/NAV_menu_extras_settings" />
         </menu>
     </item>
 </menu>
