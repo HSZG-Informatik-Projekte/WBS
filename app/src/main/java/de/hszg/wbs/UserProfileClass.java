@@ -1,7 +1,5 @@
 package de.hszg.wbs;
 
-import android.content.res.Resources;
-
 import java.util.ArrayList;
 
 public class UserProfileClass  {

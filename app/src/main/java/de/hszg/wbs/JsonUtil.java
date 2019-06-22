@@ -14,7 +14,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class JsonUtil {
     private static final String PROFILE_FILE_NAME = "wbs_profile.json";
