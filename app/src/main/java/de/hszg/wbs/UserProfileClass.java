@@ -1,5 +1,7 @@
 package de.hszg.wbs;
 
+import android.content.res.Resources;
+
 public class UserProfileClass  {
 
     private String name;
@@ -95,7 +97,7 @@ public class UserProfileClass  {
     public int getStars() { return stars; }
 
     public enum Gender {
-        MALE("Männlich"), FEMALE("Weiblich");
+        MALE(Resources.getSystem().getString(R.string.UPC_MALE)), FEMALE(Resources.getSystem().getString(R.string.UPC_FAMALE));
 
         private String bezeichner;
 
