@@ -28,31 +28,9 @@ public class JsonUtil {
     }
 
     public static UserProfileClass readProfileFromJson(Context context) {
-        StringBuilder brString = new StringBuilder();
-        File file;
-        file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String mLine;
-            while ((mLine = reader.readLine()) != null) {
-                brString.append(mLine);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
         JSONObject jsonObj = null;
         try {
-            jsonObj = new JSONObject(brString.toString());
+            jsonObj = new JSONObject(readFromJsonFile(context, PROFILE_FILE_NAME, true));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -121,7 +99,7 @@ public class JsonUtil {
 
     public static ArrayList<VideoClass> readVideoFromJson(Context context) {
         try {
-            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, VIDEO_FILE_NAME));
+            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, VIDEO_FILE_NAME,false));
             JSONArray jArrAll = jsonObj.getJSONArray("videofiledetails");
             ArrayList<VideoClass> videoClass = new ArrayList<VideoClass>(jArrAll.length());
 
@@ -146,7 +124,7 @@ public class JsonUtil {
 
     public static ArrayList<WorldClass> readWorldFromJson(Context context) {
         try {
-            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, WORLDS_FILE_NAME));
+            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, WORLDS_FILE_NAME,false));
             JSONArray jArrAll = jsonObj.getJSONArray("worlds");
             ArrayList<WorldClass> worldClass = new ArrayList<WorldClass>(jArrAll.length());
 
@@ -177,7 +155,7 @@ public class JsonUtil {
 
     public static ArrayList<QuestionClass> readQuestionFromJson(Context context) {
         try {
-            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, QUESTION_FILE_NAME));
+            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, QUESTION_FILE_NAME, false));
             JSONArray jQuestion = jsonObj.getJSONArray("questions");
             ArrayList<QuestionClass> questionClass = new ArrayList<QuestionClass>(jQuestion.length());
 
@@ -202,11 +180,15 @@ public class JsonUtil {
         return null;
     }
 
-    public static String readFromJsonFile(Context context, String filename) {
+    private static String readFromJsonFile(Context context, String filename, boolean profileLoad) {
         StringBuilder brString = new StringBuilder();
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename), "UTF-8"));
+            if(profileLoad) {
+                reader = new BufferedReader(new FileReader(new File(context.getFilesDir(), PROFILE_FILE_NAME)));
+            } else {
+                reader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename), "UTF-8"));
+            }
             String mLine;
             while ((mLine = reader.readLine()) != null) {
                 brString.append(mLine);
