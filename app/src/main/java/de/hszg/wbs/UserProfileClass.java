@@ -97,7 +97,7 @@ public class UserProfileClass  {
     public int getStars() { return stars; }
 
     public enum Gender {
-        MALE(Resources.getSystem().getString(R.string.UPC_MALE)), FEMALE(Resources.getSystem().getString(R.string.UPC_FAMALE));
+        MALE("Männlich"), FEMALE("Weiblich");
 
         private String bezeichner;
 
