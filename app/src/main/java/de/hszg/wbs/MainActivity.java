@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private UserProfileClass wbsProfile;
+    private ArrayList<VideoClass> videos;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView NavView;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         wbsProfile = JsonUtil.readProfileFromJson(this);
+        videos = JsonUtil.readVideoFromJson(this);
 
         setContentView(R.layout.activity_main);
 
@@ -56,19 +58,21 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < waypoints.size(); i++) {
             int rescourcename = getResources().getIdentifier("MA_imageview_" + i, "id", this.getPackageName());
             ImageView image = findViewById(rescourcename);
+            final int videoid = Integer.parseInt(waypoints.get(i).get(1));
+            if(wbsProfile.checkQuestionid(videos.get(videoid).getQuestionId())) {
+                image.setImageResource(android.R.drawable.star_big_on);
+            }
             image.setVisibility(View.VISIBLE);
-            final int i2 = i;
             //image.setImageResource(getResources().getIdentifier(waypoints.get(i).get(0),"android","" + getPackageName()));
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent mySuperIntent = new Intent(MainActivity.this, VideoScreenActivity.class);
-                    mySuperIntent.putExtra("videoNumber", Integer.parseInt(waypoints.get(i2).get(1)));
+                    mySuperIntent.putExtra("videoNumber", videoid);
                     startActivity(mySuperIntent);
                 }
             });
         }
-        //image.setImageResource(android.R.drawable.star_big_on);
 
     }
     @Override
