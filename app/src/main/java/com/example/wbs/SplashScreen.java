@@ -31,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
         Profile_Delete_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JsonUtil.DeletProfile(SplashScreen.this);
+                JsonUtil.DeleteProfile(SplashScreen.this);
                 Log.i("BLT [SS]", "DeletProfile");
             }
         });

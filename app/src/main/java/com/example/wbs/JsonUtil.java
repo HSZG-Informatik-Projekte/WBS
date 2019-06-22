@@ -19,7 +19,7 @@ public class JsonUtil {
     private static final String VIDEO_FILE_NAME = "wbs_videos.json";
     private static final String QUESTION_FILE_NAME = "wbs_questions.json";
 
-    public static void DeletProfile(Context context) {
+    public static void DeleteProfile(Context context) {
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         file.delete();
     }
@@ -55,6 +55,7 @@ public class JsonUtil {
                     UserProfileClass.Gender.getGender(jsonObj.optString("gender")),
                     jsonObj.optInt("age",0),
                     jsonObj.optInt("follower", 0),
+                    jsonObj.optInt("stars", 0),
                     jsonObj.optString("color", ""),
                     jsonObj.optString("action", "")
             );
@@ -76,6 +77,7 @@ public class JsonUtil {
             jsonObj.put("follower", upc.getFollower());
             jsonObj.put("color", upc.getColor());
             jsonObj.put("action", upc.getAction());
+            jsonObj.put("stars", upc.getStars());
         } catch (JSONException e) {
             //e.printStackTrace();
         }

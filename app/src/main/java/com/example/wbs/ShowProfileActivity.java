@@ -56,7 +56,7 @@ public class ShowProfileActivity extends AppCompatActivity {
         TxtColor.setBackgroundColor(Color.parseColor(wbsProfile.getColor()));
 
         final TextView TxtStars = findViewById(R.id.SPA_text_starcount);
-        //TxtStars.setText(wbsProfile.getStars() + "x");
+        TxtStars.setText(wbsProfile.getStars() + "x");
 
         final ImageView ImageFollower = findViewById(R.id.SPA_image_follower);
         ImageFollower.setImageResource(wbsProfile.getFollower());

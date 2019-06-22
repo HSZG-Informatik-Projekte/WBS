@@ -15,11 +15,12 @@ public class UserProfileClass  {
         this.isProfile = false;
     }
 
-    UserProfileClass(String name, Gender gender, int age, int follower, String color, String action) {
+    UserProfileClass(String name, Gender gender, int age, int follower, int stars, String color, String action) {
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.follower = follower;
+        this.stars = stars;
         this.color = color;
         this.action = action;
         this.isProfile = true;
