@@ -1,4 +1,4 @@
-package com.example.wbs;
+package de.hszg.wbs;
 
 import android.content.DialogInterface;
 import android.content.Intent;

@@ -1,10 +1,9 @@
-package com.example.wbs;
+package de.hszg.wbs;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;

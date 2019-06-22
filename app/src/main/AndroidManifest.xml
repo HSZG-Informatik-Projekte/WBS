@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.example.wbs">
+    package="de.hszg.wbs">
 
     <dist:module dist:instant="true" />
 
@@ -12,26 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullScreen">
-        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name="QuestionActivity"></activity>
         <activity
-            android:name=".ShowProfileActivity"
+            android:name="ShowProfileActivity"
             android:theme="@style/FullScreenWithActionBar" />
         <activity
-            android:name=".VideoScreenActivity"
+            android:name="VideoScreenActivity"
             android:label="VideoScreenActivity"
             android:theme="@style/FullScreen" />
         <activity
-            android:name=".EnterNewWorldActivity"
+            android:name="EnterNewWorldActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="EnterNewWorldActivity"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".CreateProfileActivity"
+            android:name="CreateProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_create_profile"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".SplashScreen"
+            android:name="SplashScreen"
             android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,12 +40,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FollowerChoiceActivity"
+            android:name="FollowerChoiceActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="FollowerChoiceActivity"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name="MainActivity"
             android:theme="@style/FullScreenWithActionBar" />
     </application>
 

@@ -1,11 +1,8 @@
-Shop --> Hinweisballon: "Noch nicht verfügbar"???
+Shop --> Hinweisballon: "Noch nicht verfï¿½gbar"???
 Variable Main Activity
 -> Geschaffte Wegpunkte ins wbsProfil
-Profil wird erstellt bei Schließen der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgewählt ist
-getApplicationContext() überall?
-Sterne ins wbsProfil
-
-Packagenamen ändern
+Profil wird erstellt bei Schlieï¿½en der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgewï¿½hlt ist
+getApplicationContext() ï¿½berall?
 
 Deletebutton wegmachen bzw ins Profil menu
 

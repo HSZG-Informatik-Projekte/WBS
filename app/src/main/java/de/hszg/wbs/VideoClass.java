@@ -1,4 +1,4 @@
-package com.example.wbs;
+package de.hszg.wbs;
 
 public class VideoClass {
     private int id;
