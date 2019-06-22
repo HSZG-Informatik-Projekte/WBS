@@ -14,11 +14,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class JsonUtil {
     private static final String PROFILE_FILE_NAME = "wbs_profile.json";
     private static final String VIDEO_FILE_NAME = "wbs_videos.json";
     private static final String QUESTION_FILE_NAME = "wbs_questions.json";
+    private static final String WORLDS_FILE_NAME = "wbs_worlds.json";
 
     public static void DeleteProfile(Context context) {
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
@@ -118,29 +120,8 @@ public class JsonUtil {
     }
 
     public static ArrayList<VideoClass> readVideoFromJson(Context context) {
-        StringBuilder brString = new StringBuilder();
-
-        BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(VIDEO_FILE_NAME), "UTF-8"));
-            String mLine;
-            while ((mLine = reader.readLine()) != null) {
-                brString.append(mLine);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        try {
-            JSONObject jsonObj = new JSONObject(brString.toString());
+            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, VIDEO_FILE_NAME));
             JSONArray jArrAll = jsonObj.getJSONArray("videofiledetails");
             ArrayList<VideoClass> videoClass = new ArrayList<VideoClass>(jArrAll.length());
 
@@ -163,12 +144,69 @@ public class JsonUtil {
         return null;
     }
 
-    public static ArrayList<QuestionClass> readQuestionFromJson(Context context) {
-        StringBuilder brString = new StringBuilder();
+    public static ArrayList<WorldClass> readWorldFromJson(Context context) {
+        try {
+            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, WORLDS_FILE_NAME));
+            JSONArray jArrAll = jsonObj.getJSONArray("worlds");
+            ArrayList<WorldClass> worldClass = new ArrayList<WorldClass>(jArrAll.length());
 
+            for(int i = 0; i < jArrAll.length(); i++) {
+                JSONObject jWaypoints = new JSONObject(jArrAll.getJSONObject(i).getString("waypoint"));
+                ArrayList<ArrayList<String>> waypoints = new ArrayList<>(jWaypoints.length());
+                for (int j = 0; j < jWaypoints.length(); j++) {
+                    ArrayList<String> arli = new ArrayList<>();
+                    arli.add(jWaypoints.getJSONObject("" + j).getString("icon"));
+                    arli.add(jWaypoints.getJSONObject("" + j).getString("videoid"));
+                    waypoints.add(arli);
+                }
+                WorldClass wc = new WorldClass(
+                        jArrAll.getJSONObject(i).optInt("worldid",0),
+                        jArrAll.getJSONObject(i).optString("name",""),
+                        jArrAll.getJSONObject(i).optString("map",""),
+                        waypoints
+                );
+                worldClass.add(wc);
+            }
+
+            return worldClass;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<QuestionClass> readQuestionFromJson(Context context) {
+        try {
+            JSONObject jsonObj = new JSONObject(readFromJsonFile(context, QUESTION_FILE_NAME));
+            JSONArray jQuestion = jsonObj.getJSONArray("questions");
+            ArrayList<QuestionClass> questionClass = new ArrayList<QuestionClass>(jQuestion.length());
+
+            for(int i = 0; i < jQuestion.length(); i++) {
+                JSONObject jAnwers = new JSONObject(jQuestion.getJSONObject(i).getString("answers"));
+                ArrayList<String> anwers = new ArrayList<>(jAnwers.length());
+                for (int j = 0; j < jAnwers.length(); j++) {
+                    anwers.add(jAnwers.getString("" + j));
+                }
+                QuestionClass qc = new QuestionClass(
+                        jQuestion.getJSONObject(i).optInt("id",i),
+                        jQuestion.getJSONObject(i).optString("question",""),
+                        jQuestion.getJSONObject(i).optInt("right",0),
+                        anwers
+                );
+                questionClass.add(qc);
+            }
+            return questionClass;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String readFromJsonFile(Context context, String filename) {
+        StringBuilder brString = new StringBuilder();
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(QUESTION_FILE_NAME), "UTF-8"));
+            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename), "UTF-8"));
             String mLine;
             while ((mLine = reader.readLine()) != null) {
                 brString.append(mLine);
@@ -184,30 +222,6 @@ public class JsonUtil {
                 }
             }
         }
-
-        try {
-            JSONObject jsonObj = new JSONObject(brString.toString());
-            JSONArray jQuestion = jsonObj.getJSONArray("questions");
-            ArrayList<QuestionClass> questionClass = new ArrayList<QuestionClass>(jQuestion.length());
-
-            for(int i = 0; i < jQuestion.length(); i++) {
-                JSONObject jAnwers = new JSONObject(jQuestion.getJSONObject(i).getString("answers"));
-                ArrayList<String> anwers = new ArrayList<>(jAnwers.length());
-                for (int j = 0; j < jAnwers.length(); j++) {
-                    anwers.add(jAnwers.getString(""+j));
-                }
-                QuestionClass qc = new QuestionClass(
-                        jQuestion.getJSONObject(i).optInt("id",i),
-                        jQuestion.getJSONObject(i).optString("question",""),
-                        jQuestion.getJSONObject(i).optInt("right",0),
-                        anwers
-                );
-                questionClass.add(qc);
-            }
-            return questionClass;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return brString.toString();
     }
 }
