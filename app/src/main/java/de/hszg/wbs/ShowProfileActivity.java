@@ -1,8 +1,10 @@
 package de.hszg.wbs;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,6 +42,33 @@ public class ShowProfileActivity extends AppCompatActivity {
                 JsonUtil.WBSProfileToJson(ShowProfileActivity.this, wbsProfile);
                 startActivity(mySuperIntent);
                 finish();
+            }
+        });
+
+        final ImageView ImageDelete = findViewById(R.id.SPA_image_delete);
+        ImageDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(ShowProfileActivity.this);
+                alert.setTitle("WBS - Profile");
+                alert.setMessage("Möchtest du dein Profil wirklich löschen?");
+                alert.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        JsonUtil.DeleteProfile(ShowProfileActivity.this);
+                        Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
+                        startActivity(mySuperIntent);
+                        finish();
+                    }
+                });
+                alert.setNegativeButton("Nein", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alert.create();
+                alert.show();
             }
         });
 

@@ -19,22 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        /* DEBUG
-        *  vor start Profil Datei löschen
-        */
-        //JsonUtil.DeletProfile(this);
-
-
         wbsProfile = JsonUtil.readProfileFromJson(this);
-
-        Button Profile_Delete_Button = findViewById(R.id.Profile_Delete_Button);
-        Profile_Delete_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                JsonUtil.DeleteProfile(SplashScreen.this);
-                Log.i("BLT [SS]", "DeletProfile");
-            }
-        });
 
         new Handler().postDelayed(new Runnable() {
             @Override

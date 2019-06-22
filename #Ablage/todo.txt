@@ -4,6 +4,4 @@ Variable Main Activity
 Profil wird erstellt bei Schlie�en der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgew�hlt ist
 getApplicationContext() �berall?
 
-Deletebutton wegmachen bzw ins Profil menu
-
 Vortrag
