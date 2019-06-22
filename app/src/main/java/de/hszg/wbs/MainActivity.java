@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<ArrayList<String>> waypoints = JsonUtil.readWorldFromJson(this).get(0).getWaypoints();
         Log.i("waypoints", "android.R.drawable.ic_menu_help " + android.R.drawable.ic_menu_help);
-        Log.i("waypoints", "waypoints.get(0).get(0) " + waypoints.get(0).get(0));
         Log.i("waypoints", "getResources " + getResources().getIdentifier("ic_menu_help","drawable", "" + getPackageName()));
         for(int i = 0; i < waypoints.size(); i++) {
             int rescourcename = getResources().getIdentifier("MA_imageview_" + i, "id", this.getPackageName());
@@ -72,17 +71,6 @@ public class MainActivity extends AppCompatActivity {
         }
         //image.setImageResource(android.R.drawable.star_big_on);
 
-/*
-        ImageView image2 = findViewById(R.id.MA_imageview_2);
-        image2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mySuperIntent = new Intent(MainActivity.this, VideoScreenActivity.class);
-                mySuperIntent.putExtra("videoNumber", 2);
-                startActivity(mySuperIntent);
-            }
-        });
-        */
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
