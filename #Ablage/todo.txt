@@ -3,5 +3,6 @@ Variable Main Activity -> OK
 	Jetzt noch mit verscheidenen Welten
 Profil wird erstellt bei Schlie�en der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgew�hlt ist
 getApplicationContext() �berall?
+Zurück Button oben unter ChangeProfile geht nicht
 
 Vortrag
