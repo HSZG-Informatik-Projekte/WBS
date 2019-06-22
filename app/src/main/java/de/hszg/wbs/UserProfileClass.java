@@ -111,6 +111,7 @@ public class UserProfileClass  {
     public void addQuestionsid(int questionsid) {
         if(!checkQuestionid(questionsid)) {
             this.questionsids.add(questionsid);
+            this.incrementStar();
         }
     }
 
