@@ -1,6 +1,7 @@
 package de.hszg.wbs;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,9 +48,25 @@ public class JsonUtil {
             }
         }
 
+        JSONObject jsonObj = null;
         try {
-            JSONObject jsonObj = new JSONObject(brString.toString());
+            jsonObj = new JSONObject(brString.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        Log.i("BTL READ:", jsonObj.toString());
+
+        ArrayList<Integer> questionsids = new ArrayList<Integer>();
+        try {
+            for (String questionid : jsonObj.optString("questionsids", "").split(",")) {
+                questionsids.add(Integer.parseInt(questionid));
+            }
+        }catch(NumberFormatException e){
+            e.printStackTrace();
+        }
+
+        try {
             UserProfileClass userProfileClass = new UserProfileClass(
                     jsonObj.optString("name", ""),
                     UserProfileClass.Gender.getGender(jsonObj.optString("gender")),
@@ -57,11 +74,12 @@ public class JsonUtil {
                     jsonObj.optInt("follower", 0),
                     jsonObj.optInt("stars", 0),
                     jsonObj.optString("color", ""),
-                    jsonObj.optString("action", "")
+                    jsonObj.optString("action", ""),
+                    questionsids
             );
             return userProfileClass;
-        } catch (JSONException e) {
-            //e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         UserProfileClass userProfileClass = new UserProfileClass();
         return userProfileClass;
@@ -78,9 +96,12 @@ public class JsonUtil {
             jsonObj.put("color", upc.getColor());
             jsonObj.put("action", upc.getAction());
             jsonObj.put("stars", upc.getStars());
-        } catch (JSONException e) {
+            jsonObj.put("questionsids", upc.getQuestionsid().toString().replace("[","").replace("]","").replace(" ", ""));
+        } catch (Exception e) {
             //e.printStackTrace();
         }
+
+        Log.i("BTL WRITE:", jsonObj.toString());
 
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         FileOutputStream outputStream = null;

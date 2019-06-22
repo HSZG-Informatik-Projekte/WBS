@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
 
+    private UserProfileClass wbsProfile;
     private int choseCheckBox;
     private ArrayList<CheckBox> checkboxes = new ArrayList<>();
 
@@ -24,6 +25,8 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        wbsProfile = JsonUtil.readProfileFromJson(this);
 
         final Button ButtonNext = findViewById(R.id.QA_button_next);
         final Button ButtonBack = findViewById(R.id.QA_button_back);
@@ -73,6 +76,9 @@ public class QuestionActivity extends AppCompatActivity {
                     alert.setPositiveButton("weiter ...", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            wbsProfile.addQuestionsid(questionNr);
+                            JsonUtil.WBSProfileToJson(QuestionActivity.this, wbsProfile);
+
                             Intent mySuperIntent;
                             mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
                             startActivity(mySuperIntent);

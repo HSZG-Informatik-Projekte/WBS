@@ -2,6 +2,8 @@ package de.hszg.wbs;
 
 import android.content.res.Resources;
 
+import java.util.ArrayList;
+
 public class UserProfileClass  {
 
     private String name;
@@ -12,12 +14,13 @@ public class UserProfileClass  {
     private boolean isProfile;
     private String action;
     private int stars;
+    private ArrayList<Integer> questionsids;
 
     UserProfileClass() {
         this.isProfile = false;
     }
 
-    UserProfileClass(String name, Gender gender, int age, int follower, int stars, String color, String action) {
+    UserProfileClass(String name, Gender gender, int age, int follower, int stars, String color, String action, ArrayList<Integer> questionsids) {
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -25,6 +28,7 @@ public class UserProfileClass  {
         this.stars = stars;
         this.color = color;
         this.action = action;
+        this.questionsids = questionsids;
         this.isProfile = true;
     }
 
@@ -95,6 +99,33 @@ public class UserProfileClass  {
     }
 
     public int getStars() { return stars; }
+
+    public ArrayList<Integer> getQuestionsid() {
+        return questionsids;
+    }
+
+    public void setQuestionsid(ArrayList<Integer> questionsid) {
+        this.questionsids = questionsid;
+    }
+
+    public void addQuestionsid(int questionsid) {
+        if(!checkQuestionid(questionsid)) {
+            this.questionsids.add(questionsid);
+        }
+    }
+
+    public boolean checkQuestionid(int questionsid) {
+        for (int question : this.questionsids) {
+            if(question == questionsid) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void deleteAllQuestions() {
+        this.questionsids.clear();
+    }
 
     public enum Gender {
         MALE("Männlich"), FEMALE("Weiblich");
