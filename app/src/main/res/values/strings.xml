@@ -24,6 +24,7 @@
 
     <string name="SPA_Head">Profil</string>
     <string name="SPA_Edit">Profil bearbeiten</string>
+    <string name="SPA_Delete">Profil löschen</string>
     <string name="SPA_Name">Name</string>
     <string name="SPA_Sex">Geschlecht</string>
     <string name="SPA_Age">Alter</string>
@@ -55,5 +56,4 @@
 
     <string name="close">close</string>
     <string name="open">open</string>
-    <string name="SPA_Delete">Profil löschen</string>
 </resources>

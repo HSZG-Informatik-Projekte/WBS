@@ -1,5 +1,7 @@
 package de.hszg.wbs;
 
+import android.content.res.Resources;
+
 public class UserProfileClass  {
 
     private String name;
