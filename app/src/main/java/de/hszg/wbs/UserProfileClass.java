@@ -1,7 +1,5 @@
 package de.hszg.wbs;
 
-import android.content.res.Resources;
-
 import java.util.ArrayList;
 
 public class UserProfileClass  {
@@ -111,6 +109,7 @@ public class UserProfileClass  {
     public void addQuestionsid(int questionsid) {
         if(!checkQuestionid(questionsid)) {
             this.questionsids.add(questionsid);
+            this.incrementStar();
         }
     }
 

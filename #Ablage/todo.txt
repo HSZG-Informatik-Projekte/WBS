@@ -1,9 +1,11 @@
-﻿Shop --> Hinweisballon: "Noch nicht verf�gbar"???
-Variable Main Activity
+Shop --> Hinweisballon: "Noch nicht verf�gbar"???
+Variable Main Activity -> OK
+	Jetzt noch mit verscheidenen Welten
 -> fragezeichen setzen ansonsten fertig
 Stern setzen bei richtiger beantwortung
 -> Geschaffte Wegpunkte ins wbsProfil
 Profil wird erstellt bei Schlie�en der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgew�hlt ist
 getApplicationContext() �berall?
+Zurück Button oben unter ChangeProfile geht nicht
 
 Vortrag

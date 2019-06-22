@@ -14,7 +14,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class JsonUtil {
     private static final String PROFILE_FILE_NAME = "wbs_profile.json";
@@ -31,35 +30,38 @@ public class JsonUtil {
         JSONObject jsonObj = null;
         try {
             jsonObj = new JSONObject(readFromJsonFile(context, PROFILE_FILE_NAME, true));
+            Log.i("BTL READ:", "JSONObject: " + jsonObj.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        Log.i("BTL READ:", jsonObj.toString());
-
-        ArrayList<Integer> questionsids = new ArrayList<Integer>();
-        try {
-            for (String questionid : jsonObj.optString("questionsids", "").split(",")) {
-                questionsids.add(Integer.parseInt(questionid));
+        if(jsonObj != null){
+            ArrayList<Integer> questionsids = new ArrayList<Integer>();
+            try {
+                for (String questionid : jsonObj.optString("questionsids", "").split(",")) {
+                    questionsids.add(Integer.parseInt(questionid));
+                }
+            } catch(NumberFormatException e) {
+                e.printStackTrace();
+            } catch(NullPointerException e) {
+                e.printStackTrace();
             }
-        }catch(NumberFormatException e){
-            e.printStackTrace();
-        }
 
-        try {
-            UserProfileClass userProfileClass = new UserProfileClass(
-                    jsonObj.optString("name", ""),
-                    UserProfileClass.Gender.getGender(jsonObj.optString("gender")),
-                    jsonObj.optInt("age",0),
-                    jsonObj.optInt("follower", 0),
-                    jsonObj.optInt("stars", 0),
-                    jsonObj.optString("color", ""),
-                    jsonObj.optString("action", ""),
-                    questionsids
-            );
-            return userProfileClass;
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                UserProfileClass userProfileClass = new UserProfileClass(
+                        jsonObj.optString("name", ""),
+                        UserProfileClass.Gender.getGender(jsonObj.optString("gender")),
+                        jsonObj.optInt("age",0),
+                        jsonObj.optInt("follower", 0),
+                        jsonObj.optInt("stars", 0),
+                        jsonObj.optString("color", ""),
+                        jsonObj.optString("action", ""),
+                        questionsids
+                );
+                return userProfileClass;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         UserProfileClass userProfileClass = new UserProfileClass();
         return userProfileClass;
@@ -77,11 +79,12 @@ public class JsonUtil {
             jsonObj.put("action", upc.getAction());
             jsonObj.put("stars", upc.getStars());
             jsonObj.put("questionsids", upc.getQuestionsid().toString().replace("[","").replace("]","").replace(" ", ""));
+
+            Log.i("BTL WRITE:", jsonObj.toString());
         } catch (Exception e) {
             //e.printStackTrace();
         }
 
-        Log.i("BTL WRITE:", jsonObj.toString());
 
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         FileOutputStream outputStream = null;
