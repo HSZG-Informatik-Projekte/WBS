@@ -84,6 +84,14 @@ public class UserProfileClass  {
 
     public void setStars(int stars) { this.stars = stars; }
 
+    public void incrementStar() {
+        this.stars++;
+    }
+
+    public void decrementStar() {
+        this.stars--;
+    }
+
     public int getStars() { return stars; }
 
     public enum Gender {
