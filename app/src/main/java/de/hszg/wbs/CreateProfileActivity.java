@@ -33,10 +33,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         final Button ButtonColor_Red = findViewById(R.id.CPA_button_color_red);
         final Button ButtonColor_Blue = findViewById(R.id.CPA_button_color_blue);
         final Button ButtonColor_Green = findViewById(R.id.CPA_button_color_green);
-        final Button changeActivityProfile = findViewById(R.id.CPA_button_next);
 
-
-        //nextActivity.setEnabled(false);
         TxtName.setText("");
         TxtAge.setText("");
 
@@ -107,7 +104,7 @@ public class CreateProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setGenderUsed("FEMALE");
                 ButtonFemale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderpink"));
-                ButtonFemale.setBackgroundColor(Color.rgb(0xff, 0x69, 0xb4));//0x3F51B5);
+                ButtonFemale.setBackgroundColor(Color.rgb(0xff, 0x69, 0xb4));
                 ButtonMale.setBackgroundResource(0);
                 wbsProfile.setGender(UserProfileClass.Gender.FEMALE);
             }
@@ -118,8 +115,6 @@ public class CreateProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setGenderUsed("MALE");
                 ButtonMale.setBackgroundColor(Color.rgb(0x3f, 0x51, 0xb5));
-                //ButtonMale.setBackground(Drawable.createFromPath("/drawable/mybuttonborderblue"));
-                //ButtonMale.setBackground(Drawable.createFromPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier("mybuttonborderblue","drawable",""+getPackageName())));
                 ButtonFemale.setBackgroundResource(0);
                 wbsProfile.setGender(UserProfileClass.Gender.MALE);
             }
@@ -173,6 +168,6 @@ public class CreateProfileActivity extends AppCompatActivity {
         ButtonColor_Blue.setText("");
         Button ButtonColor_Green = findViewById(R.id.CPA_button_color_green);
         ButtonColor_Green.setText("");
-        b1.setText("o");
+        b1.setText("ok");
     }
 }

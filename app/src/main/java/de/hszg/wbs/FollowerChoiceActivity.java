@@ -1,7 +1,6 @@
 package de.hszg.wbs;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,13 +10,8 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
 public class FollowerChoiceActivity extends AppCompatActivity {
 
-    private static Resources userFollowerChoice;
     private static final String active_follower = "#FFFFFF";
     private static final String non_active_follower = "#000000";
     private UserProfileClass wbsProfile;
@@ -44,10 +38,6 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         for(ImageButton ib : imageButtonsList) {
             ib.setBackgroundColor(Color.parseColor(non_active_follower));
         }
-    }
-
-    public Resources getUserFollowerChoice() {
-        return userFollowerChoice;
     }
 
     @Override
@@ -97,7 +87,6 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             ib.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    userFollowerChoice = ib.getResources();
                     setAllFollowerNone();
                     ib.setBackgroundColor(Color.parseColor(active_follower));
                     ButtonNext.setEnabled(true);

@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -116,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        Log.i("worldId", "worldId " + worldId);
-        Log.i("worldId", "worlds.size() " + worlds.size());
         ImageView continentButtonNext = findViewById(R.id.MA_button_next);
         final int nextMap = worldId + 1;
         if (nextMap >= worlds.size()) {

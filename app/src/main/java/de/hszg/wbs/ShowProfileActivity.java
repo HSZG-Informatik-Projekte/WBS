@@ -30,7 +30,6 @@ public class ShowProfileActivity extends AppCompatActivity {
             wbsProfile = JsonUtil.readProfileFromJson(this);
         }
 
-        //ActionBar actionBar = getActionBar();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

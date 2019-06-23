@@ -1,7 +1,6 @@
 package de.hszg.wbs;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +29,6 @@ public class JsonUtil {
         JSONObject jsonObj = null;
         try {
             jsonObj = new JSONObject(readFromJsonFile(context, PROFILE_FILE_NAME, true));
-            Log.i("BTL READ:", "JSONObject: " + jsonObj.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -81,12 +79,9 @@ public class JsonUtil {
             jsonObj.put("stars", upc.getStars());
             jsonObj.put("questionsids", upc.getQuestionsid().toString().replace("[","").replace("]","").replace(" ", ""));
             jsonObj.put("localmap", upc.getLocalMap());
-
-            Log.i("BTL WRITE:", jsonObj.toString());
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
-
 
         File file = new File(context.getFilesDir(), PROFILE_FILE_NAME);
         FileOutputStream outputStream = null;
