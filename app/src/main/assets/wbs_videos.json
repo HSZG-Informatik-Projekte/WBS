@@ -2,7 +2,7 @@
   "videofiledetails": [
     {
       "videofileid": 0,
-      "name": "europe",
+      "name": "imagefilm",
       "description": "Hier geht das ab...",
       "filepath": "res/raw/imagefilm.mp4",
       "duration": 107410,
@@ -10,7 +10,7 @@
     },
     {
       "videofileid": 1,
-      "name": "funny",
+      "name": "imagefilm2",
       "description": "funny",
       "filepath": "res/raw/imagefilm2.mp4",
       "duration": 76434,
@@ -18,7 +18,7 @@
     },
     {
       "videofileid": 2,
-      "name": "paris",
+      "name": "imagefilm3",
       "description": "paris",
       "filepath": "res/raw/imagefilm3.mp4",
       "duration": 23423,
