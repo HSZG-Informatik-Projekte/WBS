@@ -62,16 +62,16 @@ public class FollowerChoiceActivity extends AppCompatActivity {
         ButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mySuperIntent;
+                Intent myIntent;
                 if (wbsProfile.getAction().equals("editProfile")) {
-                    mySuperIntent = new Intent(getApplicationContext(), ShowProfileActivity.class);
+                    myIntent = new Intent(getApplicationContext(), ShowProfileActivity.class);
                     wbsProfile.setAction("editProfileOK");
                 } else {
-                    mySuperIntent = new Intent(getApplicationContext(), EnterNewWorldActivity.class);
+                    myIntent = new Intent(getApplicationContext(), EnterNewWorldActivity.class);
                     wbsProfile.setAction("");
                 }
                 JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
-                startActivity(mySuperIntent);
+                startActivity(myIntent);
                 finish();
             }
         });

@@ -13,12 +13,13 @@ public class UserProfileClass  {
     private String action;
     private int stars;
     private ArrayList<Integer> questionsids;
+    private int localmap = 0;
 
     UserProfileClass() {
         this.isProfile = false;
     }
 
-    UserProfileClass(String name, Gender gender, int age, int follower, int stars, String color, String action, ArrayList<Integer> questionsids) {
+    UserProfileClass(String name, Gender gender, int age, int follower, int stars, String color, String action, ArrayList<Integer> questionsids, int localmap) {
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -27,6 +28,7 @@ public class UserProfileClass  {
         this.color = color;
         this.action = action;
         this.questionsids = questionsids;
+        this.localmap = localmap;
         this.isProfile = true;
     }
 
@@ -125,6 +127,10 @@ public class UserProfileClass  {
     public void deleteAllQuestions() {
         this.questionsids.clear();
     }
+
+    public int getLocalMap() { return localmap; }
+
+    public void setLocalMap(int localmap) { this.localmap = localmap; }
 
     public enum Gender {
         MALE("Männlich"), FEMALE("Weiblich");

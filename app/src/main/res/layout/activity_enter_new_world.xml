@@ -24,7 +24,7 @@
         app:srcCompat="@mipmap/world_europe" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/ENWA_text_head"
         android:layout_width="279dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"

@@ -19,9 +19,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private UserProfileClass wbsProfile;
     private ArrayList<VideoClass> videos;
+    private int worldId;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView NavView;
+    public static final int EUROPE = 0;
+    public static final int AMERICA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         wbsProfile = JsonUtil.readProfileFromJson(this);
         videos = JsonUtil.readVideoFromJson(this);
+        worldId = wbsProfile.getLocalMap();
 
         mDrawerLayout =(DrawerLayout) findViewById(R.id.menuLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open,R.string.close);
@@ -67,11 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //Europa
-        final ArrayList<ArrayList<String>> waypoints = JsonUtil.readWorldFromJson(this).get(1).getWaypoints();
-        //Log.i("waypoints", "android.R.drawable.ic_menu_help " + android.R.drawable.ic_menu_help);
-        //Log.i("waypoints", "getResources " + getResources().getIdentifier("ic_menu_help","drawable", "" + getPackageName()));
-        Log.i("waypoints", "waypoints.size() " + waypoints.size());
+        final ArrayList<ArrayList<String>> waypoints = JsonUtil.readWorldFromJson(this).get(worldId).getWaypoints();
         for(int i = 0; i < waypoints.size(); i++) {
             int rescourcename = getResources().getIdentifier("MA_imageview_" + i, "id", this.getPackageName());
             ImageView image = findViewById(rescourcename);
@@ -83,12 +83,29 @@ public class MainActivity extends AppCompatActivity {
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent mySuperIntent = new Intent(getApplicationContext(), VideoScreenActivity.class);
-                    mySuperIntent.putExtra("videoNumber", videoid);
-                    startActivity(mySuperIntent);
+                    Intent myIntent = new Intent(getApplicationContext(), VideoScreenActivity.class);
+                    myIntent.putExtra("videoNumber", videoid);
+                    startActivity(myIntent);
+                    finish();
                 }
             });
         }
+        ImageView continentButton = findViewById(R.id.MA_button_next);
+        continentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean allesErfüllt = true;
+                if(allesErfüllt) {
+                    Intent myIntent = new Intent(getApplicationContext(), EnterNewWorldActivity.class);
+                    wbsProfile.setLocalMap(AMERICA);
+                    JsonUtil.WBSProfileToJson(getApplicationContext(), wbsProfile);
+                    Log.i("worldid", "getLocalMap " + wbsProfile.getLocalMap());
+                    startActivity(myIntent);
+                    finish();
+                }
+            }
+        });
+
     }
 
     @Override

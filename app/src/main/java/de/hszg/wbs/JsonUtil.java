@@ -56,7 +56,8 @@ public class JsonUtil {
                         jsonObj.optInt("stars", 0),
                         jsonObj.optString("color", ""),
                         jsonObj.optString("action", ""),
-                        questionsids
+                        questionsids,
+                        jsonObj.optInt("localmap", 0)
                 );
                 return userProfileClass;
             } catch (Exception e) {
@@ -79,6 +80,7 @@ public class JsonUtil {
             jsonObj.put("action", upc.getAction());
             jsonObj.put("stars", upc.getStars());
             jsonObj.put("questionsids", upc.getQuestionsid().toString().replace("[","").replace("]","").replace(" ", ""));
+            jsonObj.put("localmap", upc.getLocalMap());
 
             Log.i("BTL WRITE:", jsonObj.toString());
         } catch (Exception e) {
@@ -144,6 +146,7 @@ public class JsonUtil {
                         jArrAll.getJSONObject(i).optInt("worldid",0),
                         jArrAll.getJSONObject(i).optString("name",""),
                         jArrAll.getJSONObject(i).optString("map",""),
+                        jArrAll.getJSONObject(i).optString("roadmap",""),
                         waypoints
                 );
                 worldClass.add(wc);

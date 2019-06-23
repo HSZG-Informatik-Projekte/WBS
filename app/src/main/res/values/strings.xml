@@ -34,8 +34,10 @@
 
     <string name="SPA_Follower">Begleiter</string>
 
-    <string name="ENWA_Header">Willkommen in Europa</string>
-    <string name="ENWA_Europe">Europa Karte</string>
+    <string name="ENWA_Header">Willkommen in </string>
+    <string name="ENWA_Europe">Europa</string>
+    <string name="ENWA_America">Amerika</string>
+    <string name="ENWA_Europe_Map">Europa Karte</string>
 
     <string name="MENU_CONTROL_BACK">Zurück</string>
     <string name="MENU_CONTROL_NEXT">Weiter</string>

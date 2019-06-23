@@ -79,7 +79,8 @@ public class QuestionActivity extends AppCompatActivity {
                             wbsProfile.addQuestionsid(questionNr);
                             JsonUtil.WBSProfileToJson(QuestionActivity.this, wbsProfile);
 
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(myIntent);
                             finish();
                         }
                     });
@@ -94,7 +95,8 @@ public class QuestionActivity extends AppCompatActivity {
                     alert.setPositiveButton("Später noch einmal", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(myIntent);
                             finish();
                         }
                     });
@@ -114,9 +116,10 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        Intent mySuperIntent = new Intent(getApplicationContext(), VideoScreenActivity.class);
-        mySuperIntent.putExtra("videoNumber", (int) getIntent().getExtras().getSerializable("videoNumber"));
-        startActivity(mySuperIntent);
+        Intent myIntent = new Intent(getApplicationContext(), VideoScreenActivity.class);
+        myIntent.putExtra("videoNumber", (int) getIntent().getExtras().getSerializable("videoNumber"));
+
+        startActivity(myIntent);
         finish();
     }
 

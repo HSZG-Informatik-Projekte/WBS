@@ -1,6 +1,4 @@
-﻿Variable Main Activity -> OK
-	Jetzt noch mit verscheidenen Welten
--> fragezeichen setzen ansonsten fertig
+﻿-> fragezeichen setzen ansonsten fertig
 Profil wird erstellt bei Schlie�en der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgew�hlt ist
 
 kaum etwas wird gecatcht

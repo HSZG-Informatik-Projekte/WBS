@@ -2,8 +2,9 @@
   "worlds": [
     {
       "worldid": 0,
-      "name": "europe",
-      "map": "mipmap/ma_road_europa",
+      "name": "ENWA_Europe",
+      "map": "world_europe",
+      "roadmap": "ma_road_europa",
       "waypoint": {
         "0" : {
           "icon": "android.R.drawable.ic_menu_help",
@@ -21,8 +22,9 @@
     },
     {
       "worldid": 1,
-      "name": "amerika",
-      "map": "mipmap/ma_road_europa",
+      "name": "ENWA_America",
+      "map": "world_europe",
+      "roadmap": "ma_road_europa",
       "waypoint": {
         "0" : {
           "icon": "android.R.drawable.ic_menu_help",

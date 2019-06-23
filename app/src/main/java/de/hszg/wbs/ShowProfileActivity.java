@@ -95,7 +95,8 @@ public class ShowProfileActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(myIntent);
         finish();
     }
 
