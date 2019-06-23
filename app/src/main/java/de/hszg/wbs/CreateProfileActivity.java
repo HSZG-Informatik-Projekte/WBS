@@ -70,8 +70,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 if (!TxtName.getText().equals("") && !TxtAge.getText().equals("") && !gender.equals("") && !color.equals("")) {
                     wbsProfile.setisProfile(true);
                     JsonUtil.WBSProfileToJson(CreateProfileActivity.this, wbsProfile);
-                    Intent mySuperIntent = new Intent(CreateProfileActivity.this, FollowerChoiceActivity.class);
-                    startActivity(mySuperIntent);
+                    startActivity(new Intent(getApplicationContext(), FollowerChoiceActivity.class));
                     finish();
                 }
             }
@@ -154,8 +153,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
     public void onBackPressed(){
         if (wbsProfile.getisProfile()) {
-            Intent mySuperIntent = new Intent(getApplicationContext(), ShowProfileActivity.class);
-            startActivity(mySuperIntent);
+            startActivity(new Intent(getApplicationContext(), ShowProfileActivity.class));
         }
         finish();
     }

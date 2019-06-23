@@ -22,11 +22,10 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 Intent mySuperIntent;
-
                 if(wbsProfile.getisProfile()) {
-                    mySuperIntent = new Intent(SplashScreen.this, MainActivity.class);
+                    mySuperIntent = new Intent(getApplicationContext(), MainActivity.class);
                 } else {
-                    mySuperIntent = new Intent(SplashScreen.this, CreateProfileActivity.class);
+                    mySuperIntent = new Intent(getApplicationContext(), CreateProfileActivity.class);
                 }
                 startActivity(mySuperIntent);
 

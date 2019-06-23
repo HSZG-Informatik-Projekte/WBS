@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,10 +38,9 @@ public class ShowProfileActivity extends AppCompatActivity {
         ImageEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
                 wbsProfile.setAction("editProfile");
-                JsonUtil.WBSProfileToJson(ShowProfileActivity.this, wbsProfile);
-                startActivity(mySuperIntent);
+                JsonUtil.WBSProfileToJson(getApplicationContext(), wbsProfile);
+                startActivity(new Intent(ShowProfileActivity.this, CreateProfileActivity.class));
                 finish();
             }
         });
@@ -56,8 +56,7 @@ public class ShowProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         JsonUtil.DeleteProfile(ShowProfileActivity.this);
-                        Intent mySuperIntent = new Intent(ShowProfileActivity.this, CreateProfileActivity.class);
-                        startActivity(mySuperIntent);
+                        startActivity(new Intent(getApplicationContext(), CreateProfileActivity.class));
                         finish();
                     }
                 });
@@ -88,6 +87,16 @@ public class ShowProfileActivity extends AppCompatActivity {
 
         final ImageView ImageFollower = findViewById(R.id.SPA_image_follower);
         ImageFollower.setImageResource(wbsProfile.getFollower());
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
+    }
+
+    public void onBackPressed(){
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
     }
 
 }

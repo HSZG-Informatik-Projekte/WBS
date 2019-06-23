@@ -64,10 +64,10 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent mySuperIntent;
                 if (wbsProfile.getAction().equals("editProfile")) {
-                    mySuperIntent = new Intent(FollowerChoiceActivity.this, ShowProfileActivity.class);
+                    mySuperIntent = new Intent(getApplicationContext(), ShowProfileActivity.class);
                     wbsProfile.setAction("editProfileOK");
                 } else {
-                    mySuperIntent = new Intent(FollowerChoiceActivity.this, EnterNewWorldActivity.class);
+                    mySuperIntent = new Intent(getApplicationContext(), EnterNewWorldActivity.class);
                     wbsProfile.setAction("");
                 }
                 JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
@@ -82,8 +82,7 @@ public class FollowerChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 JsonUtil.WBSProfileToJson(FollowerChoiceActivity.this, wbsProfile);
-                Intent mySuperIntent = new Intent(FollowerChoiceActivity.this, CreateProfileActivity.class);
-                startActivity(mySuperIntent);
+                startActivity(new Intent(getApplicationContext(), CreateProfileActivity.class));
                 finish();
             }
         });

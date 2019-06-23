@@ -20,9 +20,7 @@ public class EnterNewWorldActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mySuperIntent;
-                mySuperIntent = new Intent(EnterNewWorldActivity.this, MainActivity.class);
-                startActivity(mySuperIntent);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
         }, SPLASH_TIME);

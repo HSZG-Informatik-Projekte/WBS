@@ -26,15 +26,19 @@
       "waypoint": {
         "0" : {
           "icon": "android.R.drawable.ic_menu_help",
-          "videoid": 3
+          "videoid": 2
         },
         "1" : {
           "icon": "android.R.drawable.ic_menu_help",
-          "videoid": 4
+          "videoid": 1
         },
         "2" : {
           "icon": "android.R.drawable.ic_menu_help",
-          "videoid": 5
+          "videoid": 0
+        },
+        "3" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 1
         }
       }
     }

@@ -79,9 +79,7 @@ public class QuestionActivity extends AppCompatActivity {
                             wbsProfile.addQuestionsid(questionNr);
                             JsonUtil.WBSProfileToJson(QuestionActivity.this, wbsProfile);
 
-                            Intent mySuperIntent;
-                            mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
-                            startActivity(mySuperIntent);
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         }
                     });
@@ -96,9 +94,7 @@ public class QuestionActivity extends AppCompatActivity {
                     alert.setPositiveButton("Später noch einmal", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent mySuperIntent;
-                            mySuperIntent = new Intent(QuestionActivity.this, MainActivity.class);
-                            startActivity(mySuperIntent);
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         }
                     });
@@ -117,13 +113,11 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
-    @Override
     public void onBackPressed(){
         Intent mySuperIntent = new Intent(QuestionActivity.this, VideoScreenActivity.class);
         mySuperIntent.putExtra("videoNumber", (int) getIntent().getExtras().getSerializable("videoNumber"));
         startActivity(mySuperIntent);
         finish();
-
     }
 
     private void setCheckGroup(CheckBox cks) {

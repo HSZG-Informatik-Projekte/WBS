@@ -67,7 +67,7 @@ public class VideoScreenActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  Intent mySuperIntent = new Intent(VideoScreenActivity.this, QuestionActivity.class);;
+                  Intent mySuperIntent = new Intent(getApplicationContext(), QuestionActivity.class);;
                   mySuperIntent.putExtra("VQId", VQId);
                   mySuperIntent.putExtra("videoNumber", videoNumber);
                   startActivity(mySuperIntent);
@@ -193,8 +193,7 @@ public class VideoScreenActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        Intent mySuperIntent = new Intent(VideoScreenActivity.this, MainActivity.class);
-        startActivity(mySuperIntent);
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
 }

@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.NAV_Item_profile:
-                        Intent mySuperIntent = new Intent(MainActivity.this, ShowProfileActivity.class);
-                        startActivity(mySuperIntent);
+                        startActivity(new Intent(getApplicationContext(), ShowProfileActivity.class));
                         return true;
                     case R.id.NAV_Item_follower_shop:
                     case R.id.NAV_Item_to_do_liste:
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Europa
-        final ArrayList<ArrayList<String>> waypoints = JsonUtil.readWorldFromJson(this).get(0).getWaypoints();
+        final ArrayList<ArrayList<String>> waypoints = JsonUtil.readWorldFromJson(this).get(1).getWaypoints();
         //Log.i("waypoints", "android.R.drawable.ic_menu_help " + android.R.drawable.ic_menu_help);
         //Log.i("waypoints", "getResources " + getResources().getIdentifier("ic_menu_help","drawable", "" + getPackageName()));
         Log.i("waypoints", "waypoints.size() " + waypoints.size());
@@ -81,31 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 image.setImageResource(android.R.drawable.star_big_on);
             }
             image.setVisibility(View.VISIBLE);
-            final int videoNumber = Integer.parseInt(waypoints.get(i).get(1));
-            Log.i("waypoints", "" + videoNumber);
-            //über videoid die fragenid holen
-            int questionId = 0;
-            ArrayList videos = JsonUtil.readVideoFromJson(this);
-            for(int j = 0; i < videos.size(); i++){
-                VideoClass video = (VideoClass) videos.get(j);
-                if(video.getId() == videoNumber){
-                    questionId = video.getQuestionId();
-                    break;
-                }
-            }
-
-            if(wbsProfile.checkQuestionid(questionId)) {
-                image.setImageResource(android.R.drawable.star_big_on);
-            } else {
-                image.setImageResource(android.R.drawable.ic_menu_help);
-                //image.setImageResource(getResources().getIdentifier(waypoints.get(i).get(0),"android","" + getPackageName()));
-            }
-            //image.setImageResource(getResources().getIdentifier(waypoints.get(i).get(0),"android","" + getPackageName()));
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent mySuperIntent = new Intent(MainActivity.this, VideoScreenActivity.class);
-                    mySuperIntent.putExtra("videoNumber", videoNumber);
+                    mySuperIntent.putExtra("videoNumber", videoid);
                     startActivity(mySuperIntent);
                 }
             });
