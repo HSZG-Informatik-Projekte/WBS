@@ -14,14 +14,14 @@
         android:layout_height="0dp"
         android:adjustViewBounds="false"
         android:contentDescription="@string/ENWA_Europe"
-        android:scaleType="fitCenter"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@mipmap/world_europe" />
+        app:srcCompat="@drawable/world_europe" />
 
     <TextView
         android:id="@+id/ENWA_text_head"

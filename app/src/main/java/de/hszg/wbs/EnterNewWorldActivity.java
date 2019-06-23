@@ -20,12 +20,15 @@ public class EnterNewWorldActivity extends AppCompatActivity {
 
         wbsProfile = JsonUtil.readProfileFromJson(this);
         final int worldid = wbsProfile.getLocalMap();
-        Log.i("worldid", "worldid " + worldid);
+        Log.i("worldid", "worldid: " + worldid);
         final WorldClass worldClass = JsonUtil.readWorldFromJson(this).get(worldid);
         ImageView mapImageView = findViewById(R.id.ENWA_imageview_background);
         TextView mapText = findViewById(R.id.ENWA_text_head);
         mapText.setText(getResources().getString(R.string.ENWA_Header) + " " + getResources().getString(getResources().getIdentifier(worldClass.getName(), "string", getPackageName())));
-        mapImageView.setImageResource(getResources().getIdentifier(worldClass.getMap(), "mipmap", this.getPackageName()));
+
+        Log.i("worldid", "getMap: " + worldClass.getMap() + "   " + getResources().getIdentifier(worldClass.getMap(), "drawable", this.getPackageName()));
+
+        mapImageView.setImageResource(getResources().getIdentifier(worldClass.getMap(), "drawable", this.getPackageName()));
 
         new Handler().postDelayed(new Runnable() {
             @Override

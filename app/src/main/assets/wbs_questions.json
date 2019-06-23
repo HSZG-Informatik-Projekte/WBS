@@ -11,31 +11,30 @@
     },
     {
       "id": 1,
-      "question": "1 Wie verhälst du dich?",
+      "question": "Wie gehst du mit dem Fremden um?",
       "answers": {
-        "0": "A Hier geht das ab",
-        "1": "B Hier geht das ab.",
-        "2": "C geht das ab"
+        "0": "Nehme Kontakt auf",
+        "1": "Kein Kontakt aufnehmen",
+        "2": "Ich gehe mit dem Fremden mit"
       },
-      "right": "2"
+      "right": "1"
     },
     {
       "id": 2,
-      "question": "2 Wie verhälst du dich?",
+      "question": "Was mache ich mit dem Messer in der Küche?",
       "answers": {
-        "0": "A Hier geht das ab",
-        "1": "B Hier geht das ab",
-        "2": "C Hier geht das ab",
-        "3": "D Hier geht das ab"
+        "0": "Liegenlassen und nicht anfassen",
+        "1": "Damit spielen",
+        "2": "Mich darin Spiegeln"
       },
-      "right": "3"
+      "right": "0"
     },
     {
       "id": 3,
-      "question": "3 Wie verhälst du dich?",
+      "question": "Wie verhälst du dich?",
       "answers": {
-        "0": "A Hier geht das ab",
-        "1": "B Hier geht das ab"
+        "0": "Verhalten A",
+        "1": "Verhalten B"
       },
       "right": "1"
     }

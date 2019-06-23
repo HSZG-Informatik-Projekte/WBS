@@ -23,8 +23,8 @@
     {
       "worldid": 1,
       "name": "ENWA_America",
-      "map": "world_europe",
-      "roadmap": "ma_road_europa",
+      "map": "world_north_america",
+      "roadmap": "ma_road_america",
       "waypoint": {
         "0" : {
           "icon": "android.R.drawable.ic_menu_help",
