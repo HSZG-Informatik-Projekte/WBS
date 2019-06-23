@@ -5,6 +5,8 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="EMPTY"></string>
+    <string name="CONTROL_BACK">Zurück</string>
+    <string name="CONTROL_NEXT">Weiter</string>
 
     <string name="CPA_Header">Profil anlegen</string>
     <string name="CPA_Name">Meine Name:</string>
@@ -39,8 +41,6 @@
     <string name="ENWA_America">Amerika</string>
     <string name="ENWA_Europe_Map">Europa Karte</string>
 
-    <string name="MENU_CONTROL_BACK">Zurück</string>
-    <string name="MENU_CONTROL_NEXT">Weiter</string>
     <string name="title_activity_menu__test">Menu_Test</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -17,6 +17,8 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         wbsProfile = JsonUtil.readProfileFromJson(this);
+        wbsProfile.setLocalMap(MainActivity.EUROPE);
+
 
         new Handler().postDelayed(new Runnable() {
             @Override

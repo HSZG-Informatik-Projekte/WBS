@@ -33,7 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
         wbsProfile = JsonUtil.readProfileFromJson(this);
         videos = JsonUtil.readVideoFromJson(this);
+        ArrayList<WorldClass> worlds = JsonUtil.readWorldFromJson(this);
         worldId = wbsProfile.getLocalMap();
+        if(worldId >= worlds.size()) {
+            worldId = worlds.size() - 1;
+        }
+        WorldClass world = worlds.get(worldId);
+
 
         mDrawerLayout =(DrawerLayout) findViewById(R.id.menuLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open,R.string.close);
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        final ArrayList<ArrayList<String>> waypoints = JsonUtil.readWorldFromJson(this).get(worldId).getWaypoints();
+        final ArrayList<ArrayList<String>> waypoints = world.getWaypoints();
         for(int i = 0; i < waypoints.size(); i++) {
             int rescourcename = getResources().getIdentifier("MA_imageview_" + i, "id", this.getPackageName());
             ImageView image = findViewById(rescourcename);
@@ -90,21 +96,49 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        ImageView continentButton = findViewById(R.id.MA_button_next);
-        continentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean allesErfüllt = true;
-                if(allesErfüllt) {
+
+
+        ImageView continentButtonPrev = findViewById(R.id.MA_button_prev);
+        final int prevMap = worldId - 1;
+        if (prevMap < 0) {
+            continentButtonPrev.setVisibility(View.INVISIBLE);
+        } else  {
+            continentButtonPrev.setVisibility(View.VISIBLE);
+            continentButtonPrev.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     Intent myIntent = new Intent(getApplicationContext(), EnterNewWorldActivity.class);
-                    wbsProfile.setLocalMap(AMERICA);
+                    wbsProfile.setLocalMap(prevMap);
                     JsonUtil.WBSProfileToJson(getApplicationContext(), wbsProfile);
-                    Log.i("worldid", "getLocalMap " + wbsProfile.getLocalMap());
                     startActivity(myIntent);
                     finish();
                 }
-            }
-        });
+            });
+        }
+
+        Log.i("worldId", "worldId " + worldId);
+        Log.i("worldId", "worlds.size() " + worlds.size());
+        ImageView continentButtonNext = findViewById(R.id.MA_button_next);
+        final int nextMap = worldId + 1;
+        if (nextMap >= worlds.size()) {
+            continentButtonNext.setVisibility(View.INVISIBLE);
+        } else {
+            continentButtonNext.setVisibility(View.VISIBLE);
+            continentButtonNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //erst wenn alles bearbeitet ist
+                    boolean allesErfüllt = true;
+                    if (allesErfüllt) {
+                        Intent myIntent = new Intent(getApplicationContext(), EnterNewWorldActivity.class);
+                        wbsProfile.setLocalMap(nextMap);
+                        JsonUtil.WBSProfileToJson(getApplicationContext(), wbsProfile);
+                        startActivity(myIntent);
+                        finish();
+                    }
+                }
+            });
+        }
 
     }
 
