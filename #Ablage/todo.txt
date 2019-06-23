@@ -1,7 +1,5 @@
-﻿-> fragezeichen setzen ansonsten fertig
-Profil wird erstellt bei Schlie�en der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgew�hlt ist
+﻿Profil wird erstellt bei Schlie�en der App nach CreateProfileActivity, obwohl noch kein Begleiter ausgew�hlt ist
 
-kaum etwas wird gecatcht
-
+kaum etwas wird gecatcht (wenn eine Datei fehlt z.B.)
 
 Vortrag
