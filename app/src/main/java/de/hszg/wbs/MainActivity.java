@@ -57,18 +57,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), ShowProfileActivity.class));
                         return true;
                     case R.id.NAV_Item_follower_shop:
-                        AlertDialog.Builder alertShop = new AlertDialog.Builder(MainActivity.this);
-                        alertShop.setTitle("WBS");
-                        alertShop.setMessage("Dieses Feature ist noch nicht verfügbar!");
-                        alertShop.setIcon(getResources().getDrawable(R.drawable.ic_menu_info));
-                        alertShop.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        alertShop.create();
-                        alertShop.show();
                     case R.id.NAV_Item_to_do_liste:
                     case R.id.NAV_Item_settings:
                         AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
