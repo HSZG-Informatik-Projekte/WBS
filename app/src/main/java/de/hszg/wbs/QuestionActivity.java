@@ -114,7 +114,7 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        Intent mySuperIntent = new Intent(QuestionActivity.this, VideoScreenActivity.class);
+        Intent mySuperIntent = new Intent(getApplicationContext(), VideoScreenActivity.class);
         mySuperIntent.putExtra("videoNumber", (int) getIntent().getExtras().getSerializable("videoNumber"));
         startActivity(mySuperIntent);
         finish();

@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent mySuperIntent = new Intent(MainActivity.this, VideoScreenActivity.class);
+                    Intent mySuperIntent = new Intent(getApplicationContext(), VideoScreenActivity.class);
                     mySuperIntent.putExtra("videoNumber", videoid);
                     startActivity(mySuperIntent);
                 }

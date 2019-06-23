@@ -40,7 +40,7 @@ public class ShowProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 wbsProfile.setAction("editProfile");
                 JsonUtil.WBSProfileToJson(getApplicationContext(), wbsProfile);
-                startActivity(new Intent(ShowProfileActivity.this, CreateProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), CreateProfileActivity.class));
                 finish();
             }
         });

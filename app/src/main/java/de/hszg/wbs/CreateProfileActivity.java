@@ -67,7 +67,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         nextActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!TxtName.getText().equals("") && !TxtAge.getText().equals("") && !gender.equals("") && !color.equals("")) {
+                if (!TxtName.getText().equals("") && (TxtName.getText().length() > 0) && !TxtAge.getText().equals("") && (TxtAge.getText().length() > 0) && !gender.equals("") && !color.equals("")) {
                     wbsProfile.setisProfile(true);
                     JsonUtil.WBSProfileToJson(CreateProfileActivity.this, wbsProfile);
                     startActivity(new Intent(getApplicationContext(), FollowerChoiceActivity.class));
