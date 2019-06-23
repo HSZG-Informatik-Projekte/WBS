@@ -21,7 +21,7 @@ public class VideoScreenActivity extends AppCompatActivity {
     ImageButton playButton,pauseButton,repeatButton;
     Button continueButton,backButton;
     int videoNumber;
-    String VName="funny";
+    String VPfad="";
     int VQId = -1;
 
     @Override
@@ -39,20 +39,25 @@ public class VideoScreenActivity extends AppCompatActivity {
             Log.i("testId",""+video.getId());
             Log.i("testVNumber",""+videoNumber);
             Log.i("testName",""+video.getName());
-            Log.i("testVName",""+VName);
+            Log.i("testVName",""+VPfad);
             if(video.getId() == videoNumber){
-                VName = video.getName();
+                VPfad = video.getFilepath();
                 VQId = video.getQuestionId();
                 break;
             }
         }
-
+        Log.i("testVPfad",""+VPfad);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this,R.anim.anim_alpha);
 
         videoView = findViewById(R.id.videoViewID);
 
-        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier(VName,"raw",""+getPackageName()));
+
+        VPfad = VPfad.split("/")[2].split("\\.")[0];
+        Log.i("testVPfad",""+VPfad);
+
+        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier(VPfad,"raw",""+getPackageName()));
+
 
         continueButton = findViewById(R.id.continueButtonID);
         
