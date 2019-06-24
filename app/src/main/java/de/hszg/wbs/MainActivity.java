@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.NAV_Item_profile:
                         startActivity(new Intent(getApplicationContext(), ShowProfileActivity.class));
+                        finish();
                         return true;
                     case R.id.NAV_Item_follower_shop:
                     case R.id.NAV_Item_to_do_liste:
