@@ -40,8 +40,8 @@
 
     <TextView
         android:id="@+id/QA_textView_header"
-        android:layout_width="340dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -59,8 +59,8 @@
 
     <LinearLayout
         android:id="@+id/QA_LinearLayOut_answerLayout"
-        android:layout_width="340dp"
-        android:layout_height="450dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
