@@ -36,28 +36,20 @@ public class VideoScreenActivity extends AppCompatActivity {
         for(int i=0; i<videos.size(); i++){
 
             VideoClass video = (VideoClass) videos.get(i);
-            Log.i("testId",""+video.getId());
-            Log.i("testVNumber",""+videoNumber);
-            Log.i("testName",""+video.getName());
-            Log.i("testVName",""+VPfad);
             if(video.getId() == videoNumber){
                 VPfad = video.getFilepath();
                 VQId = video.getQuestionId();
                 break;
             }
         }
-        Log.i("testVPfad",""+VPfad);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this,R.anim.anim_alpha);
 
         videoView = findViewById(R.id.videoViewID);
 
-
         VPfad = VPfad.split("/")[2].split("\\.")[0];
-        Log.i("testVPfad",""+VPfad);
 
         videoView.setVideoPath("android.resource://" + getPackageName() + "/" + getResources().getIdentifier(VPfad,"raw",""+getPackageName()));
-
 
         continueButton = findViewById(R.id.continueButtonID);
         
@@ -81,7 +73,6 @@ public class VideoScreenActivity extends AppCompatActivity {
               }
         });
 
-        Log.i("test","Vor allem  "+pauseButton.getVisibility());
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -123,7 +114,6 @@ public class VideoScreenActivity extends AppCompatActivity {
                     videoView.start();
                 } else {
                     if (!playing) {
-                        Log.i("test", "play play");
                         videoView.start();
                         pauseButton.clearAnimation();
                         pauseButton.setVisibility(View.GONE);
@@ -133,13 +123,10 @@ public class VideoScreenActivity extends AppCompatActivity {
                         playButton.setVisibility(View.GONE);
 
                     } else {
-                        Log.i("test", "play stop");
                         playButton.clearAnimation();
                         playButton.setVisibility(View.GONE);
-                        Log.i("test",""+pauseButton.getVisibility());
                         pauseButton.setVisibility(View.VISIBLE);
                         videoView.pause();
-                        Log.i("test",""+pauseButton.getVisibility());
                         pauseButton.startAnimation(animAlpha);
                         playing = false;
                         pauseButton.setVisibility(View.GONE);
@@ -152,11 +139,10 @@ public class VideoScreenActivity extends AppCompatActivity {
         pauseButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Log.i("test","Pause play");
+
                 videoView.start();
                 pauseButton.clearAnimation();
                 pauseButton.setVisibility(View.GONE);
-                Log.i("test",""+pauseButton.getVisibility());
                 playing=true;
                 started=true;
                 playButton.setVisibility(View.VISIBLE);
@@ -172,19 +158,15 @@ public class VideoScreenActivity extends AppCompatActivity {
 
                 if(started) {
                     if (playing) {
-                        Log.i("test", "VView stop");
 
                         playButton.clearAnimation();
                         videoView.pause();
                         playing = false;
-                        Log.i("test",""+pauseButton.getVisibility());
+
                         pauseButton.setVisibility(View.VISIBLE);
-                        Log.i("test",""+pauseButton.getVisibility());
                         pauseButton.startAnimation(animAlpha);
                         pauseButton.setVisibility(View.GONE);
                     } else {
-                        Log.i("test", "VView play");
-
                         pauseButton.clearAnimation();
                         videoView.start();
                         playing = true;
