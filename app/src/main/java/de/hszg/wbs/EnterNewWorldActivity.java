@@ -21,6 +21,7 @@ public class EnterNewWorldActivity extends AppCompatActivity {
         final int worldid = wbsProfile.getLocalMap();
         final WorldClass worldClass = JsonUtil.readWorldFromJson(this).get(worldid);
         ImageView mapImageView = findViewById(R.id.ENWA_imageview_background);
+        mapImageView.setContentDescription(getResources().getString(getResources().getIdentifier(worldClass.getName(), "string", getPackageName())) + getResources().getString(R.string.ENWA_Map));
         TextView mapText = findViewById(R.id.ENWA_text_head);
         mapText.setText(getResources().getString(R.string.ENWA_Header) + " " + getResources().getString(getResources().getIdentifier(worldClass.getName(), "string", getPackageName())));
         mapImageView.setImageResource(getResources().getIdentifier(worldClass.getMap(), "drawable", this.getPackageName()));

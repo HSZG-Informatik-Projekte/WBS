@@ -33,13 +33,12 @@
     <string name="SPA_Color">Lieblingsfarbe</string>
     <string name="SPA_Rewards">Belohnungen</string>
     <string name="SPA_Stars">Sterne</string>
-
     <string name="SPA_Follower">Begleiter</string>
 
-    <string name="ENWA_Header">Willkommen in </string>
+    <string name="ENWA_Header">Willkommen in</string>
+    <string name="ENWA_Map">Karte</string>
     <string name="ENWA_Europe">Europa</string>
     <string name="ENWA_America">Amerika</string>
-    <string name="ENWA_Europe_Map">Europa Karte</string>
 
     <string name="title_activity_menu__test">Menu_Test</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -55,7 +54,6 @@
     <string name="NAV_title_menu_extras">Extras</string>
     <string name="NAV_menu_extras_todolist">ToDo - Liste</string>
     <string name="NAV_menu_extras_settings">Einstellung</string>
-
 
     <string name="close">close</string>
     <string name="open">open</string>
