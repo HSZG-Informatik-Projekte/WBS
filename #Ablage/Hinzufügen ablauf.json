@@ -1,0 +1,41 @@
+World
+,
+{
+      "worldid": 2,
+      "name": "ENWA_Africa",
+      "map": "world_africa",
+      "roadmap": "ma_road_america",
+      "waypoint": {
+        "0" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 4
+        }
+      }
+    }
+
+Strings
+<string name="ENWA_Africa">Afrika</string>
+
+video
+,
+    {
+      "videofileid": 4,
+      "name": "Beispiel Video",
+      "description": "nichts neues",
+      "filepath": "res/raw/imagefilm3.mp4",
+      "duration": 23423,
+      "questionid": 4
+    }
+
+Question
+    ,
+    {
+      "id": 4,
+      "question": "1 + 1 = ?",
+      "answers": {
+        "0": "0",
+        "1": "1",
+        "2": "2"
+      },
+      "right": "2"
+    }
