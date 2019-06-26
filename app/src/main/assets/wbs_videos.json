@@ -31,6 +31,14 @@
       "filepath": "res/raw/imagefilm3.mp4",
       "duration": 23423,
       "questionid": 2
+    },
+    {
+      "videofileid": 4,
+      "name": "Beispiel Video",
+      "description": "nichts neues",
+      "filepath": "res/raw/imagefilm3.mp4",
+      "duration": 23423,
+      "questionid": 4
     }
   ]
 }

@@ -43,6 +43,18 @@
           "videoid": 1
         }
       }
+    },
+    {
+      "worldid": 2,
+      "name": "ENWA_Africa",
+      "map": "world_africa",
+      "roadmap": "ma_road_america",
+      "waypoint": {
+        "0" : {
+          "icon": "android.R.drawable.ic_menu_help",
+          "videoid": 4
+        }
+      }
     }
   ]
 }
